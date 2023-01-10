@@ -790,7 +790,7 @@ classdef Raith_library < handle
                     end
                     
                 case 'fbmspath'  % FBMS path
-                    Raith_library.writerec(FileID,88,0,[]);  % Raith curved element (5800)
+                    Raith_library.writerec(FileID,88,0,[]);  % Raith FBMS element (5800)
                     Raith_library.writerec(FileID,13,2,ELE.data.layer);  % LAYER (0d02)
                     Raith_library.writerec(FileID,14,2,1000*ELE.data.DF);  % DATATYPE (0e02); 1000*DF
                     Raith_library.writerec(FileID,15,3,1000*ELE.data.w);  % WIDTH (0f03); in nm
@@ -806,7 +806,7 @@ classdef Raith_library < handle
                     Raith_library.writerec(FileID,17,0,[]);  % ENDEL (1100)
                     
                 case 'fbmscircle'  % FBMS circle
-                    Raith_library.writerec(FileID,88,0,[]);  % Raith curved element (5800)
+                    Raith_library.writerec(FileID,88,0,[]);  % Raith FBMS element (5800)
                     Raith_library.writerec(FileID,13,2,ELE.data.layer);  % LAYER (0d02)
                     Raith_library.writerec(FileID,14,2,1000*ELE.data.DF);  % DATATYPE (0e02); 1000*DF
                     Raith_library.writerec(FileID,15,3,1000*ELE.data.w);  % WIDTH (0f03); in nm
