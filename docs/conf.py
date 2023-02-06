@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Raith_GDSII'
+project = 'Raith_GDSII MATLAB Toolbox'
 copyright = '2023, Aaron Hryciw'
 author = 'Aaron Hryciw'
 release = '1.2.x'
@@ -17,7 +17,7 @@ release = '1.2.x'
 extensions = []
 
 templates_path = ['_templates']
-exclude_patterns = []
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 
 
