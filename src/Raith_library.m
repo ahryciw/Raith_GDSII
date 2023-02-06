@@ -485,12 +485,13 @@ classdef Raith_library < handle
                         V=reshape(V,1,prod(ELE.data.n_colrow));
                         
                         UV=M*obj.trans([ELE.data.uv_0(1) ELE.data.uv_0(2)])*obj.rot(ELE.data.angle)*[U;V;ones(size(U))];  % Transformations applied to aref object (if coming from a parent sref or aref element)
-                        M(7:8)=0;  % Remove translation component
+                        M2=M;  % Copy to avoid losing trans/mag info after plotting "aref" element
+                        M2(7:8)=0;  % Remove translation component
                         
                         for k=1:length(U)
-                            Mk=obj.trans(UV(:,k))*M*obj.rot(ELE.data.angle)*obj.scale(ELE.data.mag)*obj.refl(ELE.data.reflect);    
+                            Mk=obj.trans(UV(:,k))*M2*obj.rot(ELE.data.angle)*obj.scale(ELE.data.mag)*obj.refl(ELE.data.reflect);    
                             if ~any(strcmp(obj.structlist,ELE.data.name))
-                                ELE.plotedges(M,scDF);
+                                ELE.plotedges(M2,scDF);
                             else
                                 obj.plotedges(ELE.data.name,Mk,scDF);
                             end
