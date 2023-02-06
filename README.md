@@ -29,7 +29,7 @@ To install, simply place the four class definitions found in the `src` directory
 Documentation
 -------------
 
-Please refer to the online [documentation](#) for a quick-start guide, tutorial examples, and a full description of the class definitions.
+Please refer to `Raith_GDSII MATLAB Toolbox - User Guide.pdf` in the `docs` directory for a quick-start guide, tutorial examples, and a full description of the class definitions.
 
 
 License
