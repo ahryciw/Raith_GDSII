@@ -185,11 +185,11 @@ classdef Raith_element < handle
 % 2014-10-07
 %
 %
-% The Raith_GDSII MATLAB toolbox was developed at the National Institute 
-% for Nanotechnology (NINT), a joint initiative between the Government of 
-% Canada, the Government of Alberta, the National Research Council (NRC), 
-% and the University of Alberta.  If is currently maintained by the
-% University of Alberta nanoFAB facility.
+% The Raith_GDSII MATLAB Toolbox is currently maintained by the University 
+% of Alberta nanoFAB Centre.  Versions 1.1 and earlier were developed at 
+% the (former) National Institute for Nanotechnology, a joint initiative 
+% between the University of Alberta, the Government of Canada, the
+% Government of Alberta, and the National Research Council Canada (NRC).
 %
 % This Source Code Form is subject to the terms of the Mozilla Public
 % License, v. 2.0.  If a copy of the MPL was not distributed with this 
