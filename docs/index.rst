@@ -18,7 +18,7 @@ Features
 + Full support for Raith curved elements (circles, ellipses, arcs)
 + Full support for Raith "fixed beam moving stage" exposure elements (paths and circles)
 + Simply-connected font defined to use for text elements
-+ Export pattern in plain GDSII (Raith-specific elements converted to polygons and paths), to use with non-Raith GDSII editors
++ Export pattern in plain GDSII (.gds), where Raith-specific elements are converted to polygons and paths, to use with non-Raith GDSII editors
 
 .. toctree::
    :maxdepth: 2
@@ -26,6 +26,12 @@ Features
    :caption: Contents:
 
    introduction
+   quickstart
+   Raith_element
+   Raith_structure
+   Raith_library
+   Raith_positionlist
+   exttech
 
 
 

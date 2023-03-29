@@ -17,4 +17,4 @@ There are four MATLAB classes in the Raith_GDSII toolbox:  :class:`Raith_element
 
 .. [2] The `libgds <https://github.com/scholi/libgds>`_ Python library does in fact encode the dose factor, but does not truly support Raith curved elements, instead implementing them as polygons or paths.
 
-.. [3] See §5.1.3 (Edit Menu) of the *Raith Software Reference Manual*, Version 5.0.
+.. [3] See §4.1 (Importing files in ASCII format) of the *NanoSuite Software Reference Manual*, Release 6.0.
