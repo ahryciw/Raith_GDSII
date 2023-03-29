@@ -3,6 +3,12 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
+import sys
+import os
+sys.path.append(os.path.abspath("./"))
+
+from definitions import acronyms
+
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
@@ -10,6 +16,7 @@ project = 'Raith_GDSII'
 copyright = '2023, Aaron Hryciw'
 author = 'Aaron Hryciw'
 release = '1.2.x'
+version = '1.2'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -38,6 +45,7 @@ rst_prolog = """
     :language: matlabsession
     :class: highlight
 """
+rst_epilog = acronyms
 
 copybutton_prompt_text = ">> "
 

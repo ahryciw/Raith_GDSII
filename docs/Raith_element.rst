@@ -18,3 +18,9 @@ The Raith_element class
 .. class:: Raith_element
 
    This is an element.
+
+
+Array reference element
+^^^^^^^^^^^^^^^^^^^^^^^
+
+:Description:  An array reference!
