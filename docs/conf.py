@@ -34,6 +34,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 highlight_language = 'matlab'
 primary_domain = 'mat'
 add_module_names = False
+nitpicky = True
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output

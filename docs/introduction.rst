@@ -21,7 +21,7 @@ There are four MATLAB classes in the |RG| toolbox:  |RE|, |RS|, |RL|, and |RP|. 
    :arc:  A segment of a circular or elliptical path (Raith curved element). :matlab:`'arc'` elements may be single-pixel lines, have a non-zero width, or be filled (i.e., a circular or elliptical segment).
    :circle: A circle or disk (Raith curved element). :matlab:`'circle'` elements may be single-pixel lines, have a non-zero width, or be filled (i.e., a disk).
    :ellipse: An ellipse or elliptical disk (Raith curved element). :matlab:`'ellipse'` elements may be single-pixel lines, have a non-zero width, or be filled (i.e., an elliptical disk).
-   :text: A line of text rendered as simply-connected polygons [4]_.
+   :text: A line of text rendered as simply connected polygons [4]_.
    :fbmspath: A path of connected line segments and/or circular arcs, exposed using the Raith "fixed beam moving stage" (FBMS) mode, also known as *traxx*. :matlab:`'fbmspath'` elements may be either single-pixel lines or have a non-zero width.
    :fbmscircle: A circle exposed using |FBMS| mode. :matlab:`'fbmscircle'` elements may be either single-pixel lines or have a non-zero width.
    :sref: A structure reference. :matlab:`'sref'` elements refer to named |RS| objects, and may optionally apply transformations (magnification, rotation, reflection across the *u* axis) [5]_.
@@ -39,6 +39,27 @@ There are four MATLAB classes in the |RG| toolbox:  |RE|, |RS|, |RL|, and |RP|. 
    Used to define a positionlist, comprising chip-level references to |RS| objects in a |RL|, and to write a Raith-readable positionlist (.pls) file.
 
 
+Software use and bug reporting
+------------------------------
+
+Use of the |RG| toolbox is subject to the terms of the `Mozilla Public License, v. 2.0 <https://www.mozilla.org/en-US/MPL/2.0/>`_.
+
+The latest version of the |RG| toolbox may be downloaded from its `GitHub repository <https://github.com/ahryciw/Raith_GDSII>`_.
+
+Please send comments, bug reports, and future update suggestions to Aaron Hryciw at `ahryciw@ualberta.ca <mailto:ahryciw@ualberta.ca>`_.
+
+
+Citing Raith_GDSII
+------------------
+
+Please cite the |RG| MATLAB toolbox in any publication for which you found it useful by including the text "The Raith_GDSII MATLAB toolbox is maintained at the University of Alberta nanoFAB Centre; it is available at github.com/ahryciw/Raith_GDSII." in a footnote or endnote, as appropriate.
+
+
+Installation
+------------
+
+To install the |RG| toolbox, simply place the four |RG| class definitions in the ``src`` directory (:file:`Raith_element.m`, :file:`Raith_structure.m`, :file:`Raith_library.m`, and :file:`Raith_positionlist.m`) in a folder on your MATLAB path.  A full description of the these classes is contained in §§ :doc:`3<Raith_element>`--:doc:`6<Raith_positionlist>`. To get started, however, the following chapter outlines a typical (albeit brief) workflow.
+
 
 .. [1] E.g., `Gdspy <https://github.com/heitzmann/gdspy>`_, `libgds <https://github.com/scholi/libgds>`_, and `python-gdsii <https://pypi.org/project/python-gdsii>`_.
 
@@ -46,7 +67,7 @@ There are four MATLAB classes in the |RG| toolbox:  |RE|, |RS|, |RL|, and |RP|. 
 
 .. [3] See §4.1 (Importing files in ASCII format) of the *NanoSuite Software Reference Manual*, Release 6.0.
 
-.. [4] Using simply-connected polygons for text shapes prevents the interiors of letters (e.g., A, B, D) from being released if there is a subsequent undercut etch step.
+.. [4] Using `simply connected polygons <https://en.wikipedia.org/wiki/Simple_polygon>`_ for text shapes prevents the interiors of letters (e.g., A, B, D) from being released if there is a subsequent undercut etch step.
 
 .. [5] The little-used *absolute magnification* and *absolute rotation* transformations in the GDSII specification are not supported by the |RG| toolbox.
 
