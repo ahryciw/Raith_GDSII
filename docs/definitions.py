@@ -1,5 +1,5 @@
-# Definitions of all acronyms
-acronyms = """
+# Definitions of all substitutions
+substitutions = """
 .. |FBMS|       replace:: :abbr:`FBMS (fixed beam moving stage)`
 .. |FIB|        replace:: :abbr:`FIB (focused ion beam)`
 .. |EBL|        replace:: :abbr:`EBL (electron-beam lithography)`

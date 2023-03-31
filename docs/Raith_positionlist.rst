@@ -9,12 +9,19 @@ The Raith_positionlist class
 |                     |
 +---------------------+
 
-+---------+
-| Methods |
-+=========+
-|         |
-+---------+
++-----------------------------------+-----------+
+| Methods                                       |
++===================================+===========+
+| :meth:`Raith_positionlist.centre` | Centre... |
++-----------------------------------+-----------+
 
 .. class:: Raith_positionlist
 
    This is a positionlist.
+
+
+
+Methods
+-------
+
+.. method:: Raith_positionlist.centre

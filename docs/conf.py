@@ -7,7 +7,7 @@ import sys
 import os
 sys.path.append(os.path.abspath("./"))
 
-from definitions import acronyms
+from definitions import substitutions
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -46,7 +46,7 @@ rst_prolog = """
     :language: matlabsession
     :class: highlight
 """
-rst_epilog = acronyms
+rst_epilog = substitutions
 
 copybutton_prompt_text = ">> "
 
