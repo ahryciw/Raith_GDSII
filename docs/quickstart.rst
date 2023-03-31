@@ -1,7 +1,7 @@
 Quick-start guide
 =================
 
-As a simple example, let us construct a pattern of a cantilever for use with a positive-tone resist (e.g,. ZEP, PMMA). First, define a polygon element for a 10-μm-long, 1-μm-wide cantilever with 3 μm spacing between the cantilever and the edge of the window:
+As a simple example, let us construct a pattern of a cantilever for use with a positive-tone resist (e.g,. ZEP, PMMA), perhaps to be fabricated on a |SOI| wafer. First, define a polygon element for a 10-μm-long, 1-μm-wide cantilever with 3 μm spacing between the cantilever and the edge of the window:
 
 .. code-block:: matlabsession
 
@@ -13,6 +13,7 @@ As a simple example, let us construct a pattern of a cantilever for use with a p
    >> axis equal
    >> E.plot
 
+.. _cantilever_element:
 .. figure:: images/cantilever_element.svg
    :align: center
    :width: 500
@@ -29,6 +30,7 @@ Next, create a text element to label the cantilever length. Since both of these 
    >> axis equal
    >> E(2).plot
 
+.. _text-10_element:
 .. figure:: images/text-10_element.svg
    :align: center
    :width: 500
@@ -45,6 +47,7 @@ We now bundle these elements into a named structure:
    >> axis equal
    >> S.plot
 
+.. _10-um-cantilever_structure:
 .. figure:: images/10-um-cantilever_structure.svg
    :align: center
    :width: 500
@@ -89,6 +92,7 @@ Next, we create a positionlist using a Raith_positionlist object. We specify a 1
         Positionlist entry 1/1:  structure 10-um-cantilever, layer 0
    Positionlist cantilevers.pls successfully written.
 
+.. _cantilever_poslist:
 .. figure:: images/cantilever_poslist.svg
    :align: center
    :width: 500

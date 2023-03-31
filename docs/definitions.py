@@ -8,4 +8,5 @@ substitutions = """
 .. |RS|         replace:: :class:`Raith_structure`
 .. |RL|         replace:: :class:`Raith_library`
 .. |RP|         replace:: :class:`Raith_positionlist`
+.. |SOI|        replace:: :abbr:`SOI (silicon-on-insulator)`
 """
