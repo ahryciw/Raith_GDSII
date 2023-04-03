@@ -19,8 +19,8 @@ There are four MATLAB classes in the |RG| toolbox:  |RE|, |RS|, |RL|, and |RP|. 
    :path:  A path of connected line segments. :matlab:`'path'` elements may be either single-pixel lines or have a non-zero width.
    :dot:  A single-pixel dot, or series thereof.
    :arc:  A segment of a circular or elliptical path (Raith curved element). :matlab:`'arc'` elements may be single-pixel lines, have a non-zero width, or be filled (i.e., a circular or elliptical segment).
-   :circle: A circle or disk (Raith curved element). :matlab:`'circle'` elements may be single-pixel lines, have a non-zero width, or be filled (i.e., a disk).
-   :ellipse: An ellipse or elliptical disk (Raith curved element). :matlab:`'ellipse'` elements may be single-pixel lines, have a non-zero width, or be filled (i.e., an elliptical disk).
+   :circle: A circle or disc (Raith curved element). :matlab:`'circle'` elements may be single-pixel lines, have a non-zero width, or be filled (i.e., a disc).
+   :ellipse: An ellipse or elliptical disc (Raith curved element). :matlab:`'ellipse'` elements may be single-pixel lines, have a non-zero width, or be filled (i.e., an elliptical disc).
    :text: A line of text rendered as simply connected polygons [4]_.
    :fbmspath: A path of connected line segments and/or circular arcs, exposed using the Raith "fixed beam moving stage" (FBMS) mode, also known as *traxx*. :matlab:`'fbmspath'` elements may be either single-pixel lines or have a non-zero width.
    :fbmscircle: A circle exposed using |FBMS| mode. :matlab:`'fbmscircle'` elements may be either single-pixel lines or have a non-zero width.
