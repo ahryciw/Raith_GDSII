@@ -233,6 +233,36 @@ Circle element
 
    Example :matlab:`'circle'` elements. Element E1: :matlab:`data.w = []`. Element E2: :matlab:`data.w = 0`. Element E3: :matlab:`data.w = 0.2`.
 
+
+Ellipse element
+^^^^^^^^^^^^^^^
+
+:Description: Ellipse or elliptical disk (Raith curved element)
+:Constructor: :matlab:`E=Raith_element('ellipse',layer,uv_c,r,w,angle,N,DF)`
+:Properties: + **type** --  :matlab:`'ellipse'` (string)
+             + **data.layer** -- GDSII layer (integer); allowed values are 0--63
+             + **data.uv_c** -- Ellipse centre; 1 × 2 vector [*u*\ :sub:`c` \ *v*\ :sub:`c`] (µm)
+             + **data.r** -- Semi-axes of ellipse; 1 × 2 vector [*a b*] (µm); *a* corresponds to the semi-axis in the :attr:`data.angle <Raith_element.data>` direction
+             + **data.w** -- Ellipse linewidth (µm); if empty, ellipse is filled (elliptical disc); if zero, ellipse is a single-pixel line; if non-zero, ellipse has a width; a negative value is considered to be the same as empty by the Raith NanoSuite software (elliptical disc)
+             + **data.angle** -- Angle of rotation *ϕ* between positive *u*-axis and *a* semi-axis (degrees)
+             + **data.N** -- Number of vertices along ellipse circumference
+             + **data.DF** -- Dose factor for ellipse
+
+.. rubric:: Example
+.. code-block:: matlab
+
+   E1=Raith_element('ellipse',0,[0 6],[2 1],[],10,60,1.3);
+   E2=Raith_element('ellipse',0,[0 3],[2 1],0,10,60,1.3);
+   E3=Raith_element('ellipse',0,[0 0],[2 1],0.2,10,60,1.3);
+
+.. _ellipse_element:
+.. figure:: images/ellipse_element.svg
+   :align: center
+   :width: 500
+
+   Example :matlab:`'ellipse'` elements. Element E1: :matlab:`data.w = []`. Element E2: :matlab:`data.w = 0`. Element E3: :matlab:`data.w = 0.2`
+
+
 Array reference element
 ^^^^^^^^^^^^^^^^^^^^^^^
 
