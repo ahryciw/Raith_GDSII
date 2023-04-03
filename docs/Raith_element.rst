@@ -79,7 +79,7 @@ Polygon element
 :Constructor: :matlab:`E=Raith_element('polygon',layer,uv,DF)`
 :Properties: + **type** --  :matlab:`'polygon'` (string)
              + **data.layer** -- GDSII layer (integer); allowed values are 0--63
-             + **data.uv** -- 2 × *n* matrix [*u*;*v*] of polygon vertices (µm)
+             + **data.uv** -- 2 × *n* matrix [*u*; *v*] of polygon vertices (µm)
              + **data.DF** -- Dose factor for polygon
 
 .. note::
@@ -98,6 +98,35 @@ Polygon element
    :width: 500
 
    Example :matlab:`'polygon'` element
+
+
+Path element
+^^^^^^^^^^^^
+
+:Description: Path of line segments
+:Constructor: :matlab:`E=Raith_element('path',layer,uv,w,DF)`
+:Properties: + **type** --  :matlab:`'path'` (string)
+             + **data.layer** -- GDSII layer (integer); allowed values are 0--63
+             + **data.uv** -- 2 × *n* matrix [*u*; *v*] of path vertices (µm)
+             + **data.w** -- Width of path (µm); a value of zero yields single-pixel line; a negative value is considered to be the same as zero by the Raith NanoSuite software (single-pixel line)
+             + **data.DF** -- Dose factor for path
+
+.. note::
+
+   The interpretation of a negative value for GDSII path WIDTH records differs between the Raith NanoSuite software and the standard GDSII specification.  In the former, a negative width is considered the same as zero width (single-pixel line); in the latter, a negative value denotes an *absolute* width, that is, a fixed width which is not affected by magnification of any parent structure (:matlab:`'sref'` or :matlab:`'aref'` elements).
+
+.. rubric:: Example
+.. code-block:: matlab
+
+   E1=Raith_element('path',0,[0 0 1 1 2;1 0 0 1 1],0,1.3);
+   E2=Raith_element('path',0,[0 0 1 1 2;1 0 0 1 1],0.2,1.3);
+
+.. _path_element:
+.. figure:: images/path_element.svg
+   :align: center
+   :width: 500
+
+   Example :matlab:`'path'` elements. Element E1: :matlab:`data.w = 0`. Element E2: :matlab:`data.w = 0.2`.
 
 Array reference element
 ^^^^^^^^^^^^^^^^^^^^^^^
