@@ -126,7 +126,9 @@ Path element
    :align: center
    :width: 500
 
-   Example :matlab:`'path'` elements. Element E1: :matlab:`data.w = 0`. Element E2: :matlab:`data.w = 0.2`.
+   Example :matlab:`'path'` elements
+
+   Element E1: :matlab:`data.w = 0`; Element E2: :matlab:`data.w = 0.2`
 
 
 Dot element
@@ -150,7 +152,9 @@ Dot element
    :align: center
    :width: 500
 
-   Example :matlab:`'dot'` elements. Element E1: scalar :matlab:`data.DF`. Element E2: vector :matlab:`data.DF`.
+   Example :matlab:`'dot'` elements
+
+   Element E1: scalar :matlab:`data.DF`; Element E2: vector :matlab:`data.DF`
 
 
 Arc element
@@ -203,7 +207,9 @@ Arc element
    :align: center
    :width: 500
 
-   Example :matlab:`'arc'` elements. Element E1: :matlab:`data.w = []`. Element E2: :matlab:`data.w = 0`. Element E3: :matlab:`data.w = 0.2`.
+   Example :matlab:`'arc'` elements
+
+   Element E1: :matlab:`data.w = []`; Element E2: :matlab:`data.w = 0`; Element E3: :matlab:`data.w = 0.2`
 
 
 Circle element
@@ -231,7 +237,9 @@ Circle element
    :align: center
    :width: 500
 
-   Example :matlab:`'circle'` elements. Element E1: :matlab:`data.w = []`. Element E2: :matlab:`data.w = 0`. Element E3: :matlab:`data.w = 0.2`.
+   Example :matlab:`'circle'` elements
+
+   Element E1: :matlab:`data.w = []`; Element E2: :matlab:`data.w = 0`; Element E3: :matlab:`data.w = 0.2`
 
 
 Ellipse element
@@ -260,7 +268,9 @@ Ellipse element
    :align: center
    :width: 500
 
-   Example :matlab:`'ellipse'` elements. Element E1: :matlab:`data.w = []`. Element E2: :matlab:`data.w = 0`. Element E3: :matlab:`data.w = 0.2`
+   Example :matlab:`'ellipse'` elements
+
+   Element E1: :matlab:`data.w = []`; Element E2: :matlab:`data.w = 0`; Element E3: :matlab:`data.w = 0.2`
 
 
 Text element
@@ -299,8 +309,6 @@ Text element
 
       Comparison between letter "A" rendered using the Raith NanoSuite default font (left) and |RE| font (right)
 
-
-
 .. rubric:: Example
 .. code-block:: matlab
 
@@ -312,6 +320,35 @@ Text element
    :width: 500
 
    Example :matlab:`'text'` element
+
+
+FBMS path element
+^^^^^^^^^^^^^^^^^
+
+:Description: Path of fixed beam moving stage (FBMS) line segments or arcs
+:Constructor: :matlab:`E=Raith_element('fbmspath',layer,uv,cvtr,w,DF)`
+:Properties: + **type** --  :matlab:`'fbmspath'` (string)
+             + **data.layer** -- GDSII layer (integer); allowed values are 0--63
+             + **data.uv** -- 2 × *n* matrix [*u*;\ *v*] of |FBMS| path vertices (µm)
+             + **data.cvtr** -- Curvature of |FBMS| path segments (µm); if scalar and zero, the path comprises line segments (no curvature); if a 1 × *n* vector, :matlab:`data.cvtr(k)` yields a circular arc with chord endpoints of :matlab:`data.uv(:,k-1)` and :matlab:`data.uv(:,k)` such that the radial distance between the arc and the chord centre is :matlab:`data.cvtr(k)`; a positive (negative) value of :matlab:`data.cvtr(k)` corresponds to an arc to the left (right) of the chord; the value of :matlab:`data.cvtr(1)` is ignored if :matlab:`data.cvtr(k)` is 1 × *n*
+             + **data.w** -- Width of |FBMS| path (µm); a value of zero yields single-pixel line; a negative value is considered to be the same as zero by the Raith NanoSuite software (single-pixel line)
+             + **data.DF** -- Dose factor for |FBMS| path
+
+.. rubric:: Example
+.. code-block:: matlab
+
+   E1=Raith_element('fbmspath',0,[0 0 1 1 2;1 0 0 1 1],0,0,1.3);
+   E2=Raith_element('fbmspath',0,[0 0 1 1 2;1 0 0 1 1],[0 0 0.2 0 -0.5],0,1.3);
+
+.. _fbmspath_element:
+.. figure:: images/fbmspath_element.svg
+   :align: center
+   :width: 500
+
+   Example :matlab:`'fbmspath'` elements
+
+   Element E1: :matlab:`data.cvtr = 0`; Element E2: :matlab:`data.cvtr = [0 0 0.2 0 −0.5]`
+
 
 
 Array reference element
