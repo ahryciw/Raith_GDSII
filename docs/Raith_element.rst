@@ -128,6 +128,30 @@ Path element
 
    Example :matlab:`'path'` elements. Element E1: :matlab:`data.w = 0`. Element E2: :matlab:`data.w = 0.2`.
 
+
+Dot element
+^^^^^^^^^^^
+
+:Description: Single-pixel dot(s)
+:Constructor: :matlab:`E=Raith_element('dot',layer,uv,DF)`
+:Properties: + **type** --  :matlab:`'dot'` (string)
+             + **data.layer** -- GDSII layer (integer); allowed values are 0--63
+             + **data.uv** -- 2 × *n* matrix [*u*; *v*] of dot positions (µm)
+             + **data.DF** -- Dose factor(s) for dot(s); if scalar, all dots given in :attr:`data.uv <Raith_element.data>` have the same dose factor; if vector, :attr:`data.DF <Raith_element.data>` must be the same length as :attr:`data.uv <Raith_element.data>` and specifies the dose factor of each dot
+
+.. rubric:: Example
+.. code-block:: matlab
+
+   E1=Raith_element('dot',0,[0 2 2 0;0 0 1 1],1.3);
+   E2=Raith_element('dot',0,[0 2 2 0;0 0 1 1],[0 0.5 1.0 1.5]);
+
+.. _dot_element:
+.. figure:: images/dot_element.svg
+   :align: center
+   :width: 500
+
+   Example :matlab:`'dot'` elements. Element E1: scalar :matlab:`data.DF`. Element E2: vector :matlab:`data.DF`.
+
 Array reference element
 ^^^^^^^^^^^^^^^^^^^^^^^
 
