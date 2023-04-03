@@ -12,7 +12,7 @@ Features
 + Plot patterns in MATLAB using Raith dose factor colouration, from individual GDSII elements to entire positionlists
 + Full support for Raith curved elements (circles, ellipses, arcs)
 + Full support for Raith "fixed beam moving stage" exposure elements (paths and circles)
-+ Simply-connected font defined to use for text elements
++ Simply connected font defined to use for text elements
 + Export pattern in plain GDSII (.gds), where Raith-specific elements are converted to polygons and paths, to use with non-Raith GDSII editors
 
 .. toctree::

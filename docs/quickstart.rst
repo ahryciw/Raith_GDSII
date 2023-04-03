@@ -1,7 +1,7 @@
 Quick-start guide
 =================
 
-As a simple example, let us construct a pattern of a cantilever for use with a positive-tone resist (e.g,. ZEP, PMMA), perhaps to be fabricated on a |SOI| wafer. First, define a polygon element for a 10-μm-long, 1-μm-wide cantilever with 3 μm spacing between the cantilever and the edge of the window:
+As a simple example, let us construct a pattern of a cantilever for use with a positive-tone resist (e.g,. ZEP, PMMA), perhaps to be fabricated on a |SOI| wafer. First, define a polygon element for a 10-µm-long, 1-µm-wide cantilever with 3 µm spacing between the cantilever and the edge of the window:
 
 .. code-block:: matlabsession
 
@@ -68,7 +68,7 @@ This structure can now be used in a |RL| object, used to create the GDSII hierar
    Structure 1: 10-um-cantilever
    GDSII library cantilevers.csf successfully written.
 
-Next, we create a positionlist using a Raith_positionlist object. We specify a 100 μm × 100 μm writefield and a 10 mm × 10 mm chip, and assume that the path of :file:`cantilevers.csf` will be :file:`F:\\Raith\\` on the Raith computer:
+Next, we create a positionlist using a Raith_positionlist object. We specify a 100 µm × 100 µm writefield and a 10 mm × 10 mm chip, and assume that the path of :file:`cantilevers.csf` will be :file:`F:\\Raith\\` on the Raith computer:
 
 .. code-block:: matlabsession
 
@@ -101,7 +101,7 @@ Next, we create a positionlist using a Raith_positionlist object. We specify a 1
 
 To use these files in an |EBL| or |FIB| session, place :file:`cantilevers.csf` on :file:`F:\\Raith\\` on the Raith tool control computer, open :file:`cantilevers.csf` via :guilabel:`Design panel` → :guilabel:`File` → :guilabel:`Open...` in the Raith NanoSuite software, and open :file:`cantilevers.pls` via :guilabel:`File` → :guilabel:`Open positionlist...`. After the usual preliminary steps (origin and angle correction, aperture alignment, stigmation, focusing, beam current measurement, etc.), the positionlist may be scanned as normal.
 
-The above example illustrates the main functionality of the |RG| toolbox. In practice, however, structure definitions could be parametrised to facilitate script-based generation of many devices with similar, though distinct, geometries. For example, we could create a function (:file:`cantilever.m`) which takes the cantilever length, cantilever width, window width (in μm) as arguments and returns a |RS| object:
+The above example illustrates the main functionality of the |RG| toolbox. In practice, however, structure definitions could be parametrised to facilitate script-based generation of many devices with similar, though distinct, geometries. For example, we could create a function (:file:`cantilever.m`) which takes the cantilever length, cantilever width, window width (in µm) as arguments and returns a |RS| object:
 
 .. code-block:: matlab
    :caption: cantilever.m

@@ -263,6 +263,57 @@ Ellipse element
    Example :matlab:`'ellipse'` elements. Element E1: :matlab:`data.w = []`. Element E2: :matlab:`data.w = 0`. Element E3: :matlab:`data.w = 0.2`
 
 
+Text element
+^^^^^^^^^^^^
+
+:Description: Text rendered as simple polygons
+:Constructor: :matlab:`E=Raith_element('text',layer,uv_0,h,angle,uv_align,textlabel,DF)`
+:Properties: + **type** --  :matlab:`'text'` (string)
+             + **data.layer** -- GDSII layer (integer); allowed values are 0--63
+             + **data.uv_0** -- Text anchor point; 1 × 2 vector [*u*\ :sub:`0` \ *v*\ :sub:`0`] (µm)
+             + **data.h** -- Height of capital letters (µm)
+             + **data.angle** -- Angle of rotation of text with respect to positive *u*-axis (degrees)
+             + **data.uv_align** -- Alignment of text with respect to anchor point; 1 × 2 vector [*u*\ :sub:`align` \ *v*\ :sub:`align`]; allowed values are 0 (left/top), 1 (centre), and 2 (right/bottom), as follows (the + symbols denote the text anchor points):
+
+                .. image:: images/text_uv_align.svg
+
+             + **data.textlabel** -- Text to be written (string).  The allowed characters, shown as rendered, are:
+
+                .. image:: images/text_chars.svg
+
+                in addition to the space character ( ). When rendered, text is kerned using a lookup table (text is not fixed width).
+
+                .. attention::
+
+                   Use Unicode character `U+00B5 <https://util.unicode.org/UnicodeJsps/character.jsp?a=00B5>`_ to enter the letter "µ" in :attr:`data.textlabel <Raith_element.data>`.  Other similar characters (e.g., `U+03BC <https://util.unicode.org/UnicodeJsps/character.jsp?a=03BC>`_, `U+1D6CD <https://util.unicode.org/UnicodeJsps/character.jsp?a=1D6CD>`_, `U+1D707 <https://util.unicode.org/UnicodeJsps/character.jsp?a=1D707>`_, `U+1D741 <https://util.unicode.org/UnicodeJsps/character.jsp?a=1D741>`_, `U+1D77B <https://util.unicode.org/UnicodeJsps/character.jsp?a=1D77B>`_, `U+1D7B5 <https://util.unicode.org/UnicodeJsps/character.jsp?a=1D7B5>`_) will result in an error.
+
+             + **data.DF** -- Dose factor for text
+
+.. note::
+
+   A `simply connected <https://en.wikipedia.org/wiki/Simply_connected_space>`_ font is used in |RE| :matlab:`'text'` elements to avoid the problem of symbol segments being released during a sacrificial layer etch. As an example, consider etching the letter "A" through the device layer of a silicon-on-insulator chip. In the default Raith NanoSuite font, the triangular centre of the letter "A" is not connected to the surrounding plane. If the underlying buried oxide layer was subsequetly etched away isotropically for sufficiently long (e.g., in buffered-oxide etch), the central triangle would be released, potentially landing on a critical feature of the chip. A letter "A" rendered as a |RE| :matlab:`'text'` element does not encounter this problem due to its simply connected nature. The |RE| :matlab:`'text'` element font is inspired by the `Geogrotesque <https://emtype.net/fonts/geogrotesque>`_ and `Geogrotesque Stencil <https://emtype.net/fonts/geogrotesque-stencil>`_ fonts.
+
+   .. figure:: images/A_comparison.svg
+      :align: center
+      :width: 500
+
+      Comparison between letter "A" rendered using the Raith NanoSuite default font (left) and |RE| font (right)
+
+
+
+.. rubric:: Example
+.. code-block:: matlab
+
+   E=Raith_element('text',0,[0 0],1,30,[1 1],'Raith_GDSII',1.3);
+
+.. _text_element:
+.. figure:: images/text_element.svg
+   :align: center
+   :width: 500
+
+   Example :matlab:`'text'` element
+
+
 Array reference element
 ^^^^^^^^^^^^^^^^^^^^^^^
 

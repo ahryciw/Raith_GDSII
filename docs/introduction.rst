@@ -21,7 +21,7 @@ There are four MATLAB classes in the |RG| toolbox:  |RE|, |RS|, |RL|, and |RP|. 
    :arc:  A segment of a circular or elliptical path (Raith curved element). :matlab:`'arc'` elements may be single-pixel lines, have a non-zero width, or be filled (i.e., a circular or elliptical segment).
    :circle: A circle or disc (Raith curved element). :matlab:`'circle'` elements may be single-pixel lines, have a non-zero width, or be filled (i.e., a disc).
    :ellipse: An ellipse or elliptical disc (Raith curved element). :matlab:`'ellipse'` elements may be single-pixel lines, have a non-zero width, or be filled (i.e., an elliptical disc).
-   :text: A line of text rendered as simply connected polygons [4]_.
+   :text: A line of text rendered as simple polygons [4]_.
    :fbmspath: A path of connected line segments and/or circular arcs, exposed using the Raith "fixed beam moving stage" (FBMS) mode, also known as *traxx*. :matlab:`'fbmspath'` elements may be either single-pixel lines or have a non-zero width.
    :fbmscircle: A circle exposed using |FBMS| mode. :matlab:`'fbmscircle'` elements may be either single-pixel lines or have a non-zero width.
    :sref: A structure reference. :matlab:`'sref'` elements refer to named |RS| objects, and may optionally apply transformations (magnification, rotation, reflection across the *u* axis) [5]_.
@@ -67,7 +67,7 @@ To install the |RG| toolbox, simply place the four |RG| class definitions in the
 
 .. [3] See §4.1 (Importing files in ASCII format) of the *NanoSuite Software Reference Manual*, Release 6.0.
 
-.. [4] Using `simply connected polygons <https://en.wikipedia.org/wiki/Simple_polygon>`_ for text shapes prevents the interiors of letters (e.g., A, B, D) from being released if there is a subsequent undercut etch step.
+.. [4] Using `simple polygons <https://en.wikipedia.org/wiki/Simple_polygon>`_ for text shapes prevents the interiors of letters (e.g., A, B, D) from being released if there is a subsequent undercut etch step.
 
 .. [5] The little-used *absolute magnification* and *absolute rotation* transformations in the GDSII specification are not supported by the |RG| toolbox.
 
