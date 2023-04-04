@@ -24,3 +24,14 @@ The Raith_structure class
 .. class:: Raith_structure
 
    This is a structure.
+
+
+
+Properties
+----------
+
+
+Methods
+-------
+
+.. method:: Raith_structure.plot()

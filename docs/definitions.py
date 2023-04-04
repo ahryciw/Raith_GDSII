@@ -4,6 +4,7 @@ substitutions = """
 .. |FIB|        replace:: :abbr:`FIB (focused ion beam)`
 .. |EBL|        replace:: :abbr:`EBL (electron-beam lithography)`
 .. |RG|         replace:: Raith_GDSII
+.. |RNS|        replace:: Raith NanoSuite
 .. |RE|         replace:: :class:`Raith_element`
 .. |RS|         replace:: :class:`Raith_structure`
 .. |RL|         replace:: :class:`Raith_library`

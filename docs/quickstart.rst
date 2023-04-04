@@ -99,7 +99,7 @@ Next, we create a positionlist using a Raith_positionlist object. We specify a 1
 
    Plotting the positionlist. The writefield boundary is marked by a green dotted line, with the centre marked with a +. Axis limits were chosen to show the structure at chip centre.
 
-To use these files in an |EBL| or |FIB| session, place :file:`cantilevers.csf` on :file:`F:\\Raith\\` on the Raith tool control computer, open :file:`cantilevers.csf` via :guilabel:`Design panel` → :guilabel:`File` → :guilabel:`Open...` in the Raith NanoSuite software, and open :file:`cantilevers.pls` via :guilabel:`File` → :guilabel:`Open positionlist...`. After the usual preliminary steps (origin and angle correction, aperture alignment, stigmation, focusing, beam current measurement, etc.), the positionlist may be scanned as normal.
+To use these files in an |EBL| or |FIB| session, place :file:`cantilevers.csf` on :file:`F:\\Raith\\` on the Raith tool control computer, open :file:`cantilevers.csf` via :guilabel:`Design panel` → :guilabel:`File` → :guilabel:`Open...` in the |RNS| software, and open :file:`cantilevers.pls` via :guilabel:`File` → :guilabel:`Open positionlist...`. After the usual preliminary steps (origin and angle correction, aperture alignment, stigmation, focusing, beam current measurement, etc.), the positionlist may be scanned as normal.
 
 The above example illustrates the main functionality of the |RG| toolbox. In practice, however, structure definitions could be parametrised to facilitate script-based generation of many devices with similar, though distinct, geometries. For example, we could create a function (:file:`cantilever.m`) which takes the cantilever length, cantilever width, window width (in µm) as arguments and returns a |RS| object:
 

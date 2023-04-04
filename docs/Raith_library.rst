@@ -40,3 +40,11 @@ Methods
 -------
 
 .. method:: Raith_library.plot()
+
+.. staticmethod:: Raith_library.trans()
+
+.. staticmethod:: Raith_library.rot()
+
+.. staticmethod:: Raith_library.refl()
+
+.. staticmethod:: Raith_library.scale()

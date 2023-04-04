@@ -3,11 +3,13 @@ The Raith_element class
 
 .. rubric:: Class overview:  :class:`Raith_element`
 
-+---------------------+
-| Properties (public) |
-+=====================+
-|                     |
-+---------------------+
++----------------------------+-------------------------------------------------+
+| Properties (public)                                                          |
++============================+=================================================+
+| :attr:`Raith_element.type` | String specifying type of element               |
++----------------------------+-------------------------------------------------+
+| :attr:`Raith_element.data` | Structure with fields defining element geometry |
++----------------------------+-------------------------------------------------+
 
 +---------+
 | Methods |
@@ -18,6 +20,7 @@ The Raith_element class
 .. class:: Raith_element
 
 |RE| objects define low-level, unnamed patterns, collections of which are bundled together to form named structures in the GDSII library.
+
 
 
 Properties
@@ -108,12 +111,12 @@ Path element
 :Properties: + **type** --  :matlab:`'path'` (string)
              + **data.layer** -- GDSII layer (integer); allowed values are 0--63
              + **data.uv** -- 2 × *n* matrix [*u*;\ *v*] of path vertices (µm)
-             + **data.w** -- Width of path (µm); a value of zero yields single-pixel line; a negative value is considered to be the same as zero by the Raith NanoSuite software (single-pixel line)
+             + **data.w** -- Width of path (µm); a value of zero yields single-pixel line; a negative value is considered to be the same as zero by the |RNS| software (single-pixel line)
              + **data.DF** -- Dose factor for path
 
 .. note::
 
-   The interpretation of a negative value for GDSII path WIDTH records differs between the Raith NanoSuite software and the standard GDSII specification.  In the former, a negative width is considered the same as zero width (single-pixel line); in the latter, a negative value denotes an *absolute* width, that is, a fixed width which is not affected by magnification of any parent structure (:matlab:`'sref'` or :matlab:`'aref'` elements).
+   The interpretation of a negative value for GDSII path WIDTH records differs between the |RNS| software and the standard GDSII specification.  In the former, a negative width is considered the same as zero width (single-pixel line); in the latter, a negative value denotes an *absolute* width, that is, a fixed width which is not affected by magnification of any parent structure (:matlab:`'sref'` or :matlab:`'aref'` elements).
 
 .. rubric:: Example
 .. code-block:: matlab
@@ -168,13 +171,13 @@ Arc element
              + **data.r** -- Radius of arc; may be scalar for a circular arc, or a 1 × 2 vector denoting semi-axes, [*a b*], for an elliptical arc (µm)
              + **data.theta** -- Starting and ending angles of arc with respect to axis defined by :attr:`data.angle <Raith_element.data>` argument, counter-clockwise positive; 1 × 2 vector [*θ*\ :sub:`1` *θ*\ :sub:`2`] (degrees)
              + **data.angle** -- Angle of rotation *ϕ* between positive *u*-axis and *θ* = 0 axis (degrees)
-             + **data.w** -- Arc linewidth (µm); if empty, arc is a filled elliptical disc segment; if zero, arc is a single-pixel line; if non-zero, arc has a width (elliptical annulus sector); a negative value is considered to be the same as empty by the Raith NanoSuite software (filled elliptical disc segment)
+             + **data.w** -- Arc linewidth (µm); if empty, arc is a filled elliptical disc segment; if zero, arc is a single-pixel line; if non-zero, arc has a width (elliptical annulus sector); a negative value is considered to be the same as empty by the |RNS| software (filled elliptical disc segment)
              + **data.N** -- Number of vertices along arc length
              + **data.DF** -- Dose factor for arc
 
 .. note::
 
-   Arc elements are interpreted by the Raith NanoSuite software using the following parametric equations:
+   Arc elements are interpreted by the |RNS| software using the following parametric equations:
 
    .. math::
 
@@ -221,7 +224,7 @@ Circle element
              + **data.layer** -- GDSII layer (integer); allowed values are 0--63
              + **data.uv_c** -- Circle centre; 1 × 2 vector [*u*\ :sub:`c` \ *v*\ :sub:`c`] (µm)
              + **data.r** -- Radius of circle (µm)
-             + **data.w** -- Circle linewidth (µm); if empty, circle is filled (disc); if zero, circle is a single-pixel line; if non-zero, circle has a width; a negative value is considered to be the same as empty by the Raith NanoSuite software (disc)
+             + **data.w** -- Circle linewidth (µm); if empty, circle is filled (disc); if zero, circle is a single-pixel line; if non-zero, circle has a width; a negative value is considered to be the same as empty by the |RNS| software (disc)
              + **data.N** -- Number of vertices along circle circumference
              + **data.DF** -- Dose factor for circle
 
@@ -251,7 +254,7 @@ Ellipse element
              + **data.layer** -- GDSII layer (integer); allowed values are 0--63
              + **data.uv_c** -- Ellipse centre; 1 × 2 vector [*u*\ :sub:`c` \ *v*\ :sub:`c`] (µm)
              + **data.r** -- Semi-axes of ellipse; 1 × 2 vector [*a b*] (µm); *a* corresponds to the semi-axis in the :attr:`data.angle <Raith_element.data>` direction
-             + **data.w** -- Ellipse linewidth (µm); if empty, ellipse is filled (elliptical disc); if zero, ellipse is a single-pixel line; if non-zero, ellipse has a width; a negative value is considered to be the same as empty by the Raith NanoSuite software (elliptical disc)
+             + **data.w** -- Ellipse linewidth (µm); if empty, ellipse is filled (elliptical disc); if zero, ellipse is a single-pixel line; if non-zero, ellipse has a width; a negative value is considered to be the same as empty by the |RNS| software (elliptical disc)
              + **data.angle** -- Angle of rotation *ϕ* between positive *u*-axis and *a* semi-axis (degrees)
              + **data.N** -- Number of vertices along ellipse circumference
              + **data.DF** -- Dose factor for ellipse
@@ -301,14 +304,14 @@ Text element
 
 .. note::
 
-   A `simply connected <https://en.wikipedia.org/wiki/Simply_connected_space>`_ font is used in |RE| :matlab:`'text'` elements to avoid the problem of symbol segments being released during a sacrificial layer etch. As an example, consider etching the letter "A" through the device layer of a silicon-on-insulator chip. In the default Raith NanoSuite font, the triangular centre of the letter "A" is not connected to the surrounding plane. If the underlying buried oxide layer was subsequetly etched away isotropically for sufficiently long (e.g., in buffered-oxide etch), the central triangle would be released, potentially landing on a critical feature of the chip. A letter "A" rendered as a |RE| :matlab:`'text'` element does not encounter this problem due to its simply connected nature. The |RE| :matlab:`'text'` element font is inspired by the `Geogrotesque <https://emtype.net/fonts/geogrotesque>`_ and `Geogrotesque Stencil <https://emtype.net/fonts/geogrotesque-stencil>`_ fonts.
+   A `simply connected <https://en.wikipedia.org/wiki/Simply_connected_space>`_ font is used in |RE| :matlab:`'text'` elements to avoid the problem of symbol segments being released during a sacrificial layer etch. As an example, consider etching the letter "A" through the device layer of a silicon-on-insulator chip. In the default |RNS| font, the triangular centre of the letter "A" is not connected to the surrounding plane. If the underlying buried oxide layer was subsequetly etched away isotropically for sufficiently long (e.g., in buffered-oxide etch), the central triangle would be released, potentially landing on a critical feature of the chip. A letter "A" rendered as a |RE| :matlab:`'text'` element does not encounter this problem due to its simply connected nature. The |RE| :matlab:`'text'` element font is inspired by the `Geogrotesque <https://emtype.net/fonts/geogrotesque>`_ and `Geogrotesque Stencil <https://emtype.net/fonts/geogrotesque-stencil>`_ fonts.
 
    .. _A_comparison:
    .. figure:: images/A_comparison.svg
       :align: center
       :width: 500
 
-      Comparison between letter "A" rendered using the Raith NanoSuite default font (left) and |RE| font (right)
+      Comparison between letter "A" rendered using the |RNS| default font (left) and |RE| font (right)
 
 .. rubric:: Example
 .. code-block:: matlab
@@ -332,7 +335,7 @@ FBMS path element
              + **data.layer** -- GDSII layer (integer); allowed values are 0--63
              + **data.uv** -- 2 × *n* matrix [*u*;\ *v*] of |FBMS| path vertices (µm)
              + **data.cvtr** -- Curvature of |FBMS| path segments (µm); if scalar and zero, the path comprises line segments (no curvature); if a 1 × *n* vector, :matlab:`data.cvtr(k)` yields a circular arc with chord endpoints of :matlab:`data.uv(:,k-1)` and :matlab:`data.uv(:,k)` such that the radial distance between the arc and the chord centre is :matlab:`data.cvtr(k)`; a positive (negative) value of :matlab:`data.cvtr(k)` corresponds to an arc to the left (right) of the chord; the value of :matlab:`data.cvtr(1)` is ignored if :matlab:`data.cvtr(k)` is 1 × *n*
-             + **data.w** -- Width of |FBMS| path (µm); a value of zero yields single-pixel line; a negative value is considered to be the same as zero by the Raith NanoSuite software (single-pixel line)
+             + **data.w** -- Width of |FBMS| path (µm); a value of zero yields single-pixel line; a negative value is considered to be the same as zero by the |RNS| software (single-pixel line)
              + **data.DF** -- Dose factor for |FBMS| path
 
 .. rubric:: Example
@@ -460,7 +463,7 @@ Array reference element
 
 .. attention::
 
-   It is important to note that the Raith NanoSuite software interprets GDSII AREF elements differently than the GDSII specification suggests.  In particular, NanoSuite applies rotation operations *both* to the structures being referenced and the lattice vectors defining the rectangular array.  In contrast, the GDSII specification applies the rotation only to the structures; the lattice of origins for the referenced structures are fully specified using the number of rows and columns in addition to three anchor points which are calculated *after* all transformations have been applied.  This variation in interpretation can result in identical AREF elements appearing differently when viewed using the Raith NanoSuite software versus other GDSII editors, such as `KLayout <https://klayout.de/>`_; the following two figures illustrate this behaviour.
+   It is important to note that the |RNS| software interprets GDSII AREF elements differently than the GDSII specification suggests.  In particular, NanoSuite applies rotation operations *both* to the structures being referenced and the lattice vectors defining the rectangular array.  In contrast, the GDSII specification applies the rotation only to the structures; the lattice of origins for the referenced structures are fully specified using the number of rows and columns in addition to three anchor points which are calculated *after* all transformations have been applied.  This variation in interpretation can result in identical AREF elements appearing differently when viewed using the |RNS| software versus other GDSII editors, such as `KLayout <https://klayout.de/>`_; the following two figures illustrate this behaviour.
 
 .. _Raith_foo-aref:
 .. figure:: images/Raith_foo-aref.svg
@@ -478,12 +481,45 @@ Array reference element
 
 
 
-
-
-
 Methods
 -------
 
-.. method:: Raith_element.plot()
+.. method:: Raith_element.plot([M[,scDF]])
+
+   Plot |RE| object with default Raith dose factor colouring. Elements are displayed as filled polygons, where applicable (:matlab:`'polygon'`; :matlab:`'path'` with non-zero :attr:`data.w <Raith_element.data>`; :matlab:`'arc'`, :matlab:`'circle'`, and :matlab:`'ellipse'` with empty :attr:`data.w <Raith_element.data>`; :matlab:`'text'`).
+
+   :Arguments: + **M** -- Augmented transformation matrix to be applied to element [optional]; see :meth:`Raith_library.trans`,   :meth:`Raith_library.rot`, :meth:`Raith_library.refl`, and :meth:`Raith_library.scale`.
+               + **scDF** -- Overall multiplicative scaling factor for dose factor specified in :attr:`data.DF <Raith_element.data>` [optional]
+
+   :Returns: None
+
+   .. _RaithDF:
+   .. figure:: images/RaithDF.svg
+      :align: center
+      :width: 500
+
+      Default Raith dose factor colourmap
+
+   .. note::
+
+      Normally, :meth:`Raith_element.plot` is called without arguments, to display the |RE| object as it would appear in the |RNS| software. The optional arguments :matlab:`M` and :matlab:`scDF` are used internally, when :meth:`Raith_element.plot` is called by :meth:`Raith_structure.plot`, :meth:`Raith_library.plot`, or :meth:`Raith_positionlist.plot`.
+
+   Calling :meth:`Raith_element.plot` does not change the current axis scaling; issue an :matlab:`axis equal` command to ensure that the element is displayed in the figure correctly.
+
+   .. rubric:: Example
+   .. code-block:: matlab
+
+      E=Raith_element('text',0,[0 0],1,0,[0 2],'B',1.3);
+      E.plot;
+      axis equal;
+
+   .. _RE_plot:
+   .. figure:: images/RE_plot.svg
+      :align: center
+      :width: 500
+
+      Text element plotted using the :meth:`Raith_element.plot` method
+
+
 
 .. [1] See, e.g., `en.wikipedia.org/wiki/Ellipse <https://en.wikipedia.org/wiki/Ellipse>`_

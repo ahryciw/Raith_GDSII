@@ -21,7 +21,13 @@ The Raith_positionlist class
 
 
 
+Properties
+----------
+
+
 Methods
 -------
 
 .. method:: Raith_positionlist.centre
+
+.. method:: Raith_positionlist.plot
