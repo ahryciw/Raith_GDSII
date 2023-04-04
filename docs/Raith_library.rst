@@ -30,3 +30,13 @@ The Raith_library class
 .. class:: Raith_library
 
    This is a library.
+
+
+Properties
+----------
+
+
+Methods
+-------
+
+.. method:: Raith_library.plot()

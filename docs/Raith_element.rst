@@ -303,6 +303,7 @@ Text element
 
    A `simply connected <https://en.wikipedia.org/wiki/Simply_connected_space>`_ font is used in |RE| :matlab:`'text'` elements to avoid the problem of symbol segments being released during a sacrificial layer etch. As an example, consider etching the letter "A" through the device layer of a silicon-on-insulator chip. In the default Raith NanoSuite font, the triangular centre of the letter "A" is not connected to the surrounding plane. If the underlying buried oxide layer was subsequetly etched away isotropically for sufficiently long (e.g., in buffered-oxide etch), the central triangle would be released, potentially landing on a critical feature of the chip. A letter "A" rendered as a |RE| :matlab:`'text'` element does not encounter this problem due to its simply connected nature. The |RE| :matlab:`'text'` element font is inspired by the `Geogrotesque <https://emtype.net/fonts/geogrotesque>`_ and `Geogrotesque Stencil <https://emtype.net/fonts/geogrotesque-stencil>`_ fonts.
 
+   .. _A_comparison:
    .. figure:: images/A_comparison.svg
       :align: center
       :width: 500
@@ -378,10 +379,58 @@ FBMS circle element
    Element E1: :matlab:`data.w = 0`; Element E2: :matlab:`data.w = 0.2`
 
 
+Structure reference element
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:Description: Reference to a named structure, with optional transformations
+:Constructor: :matlab:`E=Raith_element('sref',name,uv_0[,mag[,angle[,reflect]]])`
+:Properties: + **type** --  :matlab:`'sref'` (string)
+             + **data.name** -- Name of structure being referenced (string)
+             + **data.uv_0** -- Structure origin; 1 × 2 vector [*u*\ :sub:`0` \ *v*\ :sub:`0`] (µm)
+             + **data.mag** -- Magnification (uniform scaling) factor [optional]; default is no magnification (:attr:`data.mag <Raith_element.data>` = 1)
+             + **data.angle** --  Angle of rotation with respect to origin, counter-clockwise positive (degrees) [optional]; default is no rotation (:attr:`data.angle <Raith_element.data>` = 0)
+             + **data.reflect** --  Boolean flag (0 or 1) for reflecting about *u*-axis before other transformations [optional]; default is no reflection (:attr:`data.reflect <Raith_element.data>` = 0)
+
+.. note::
+
+   Transformations are applied in the following order: 1. scaling, mirroring; 2. rotation; 3. translation.
+
+   .. _sref_transformations:
+   .. figure:: images/sref_transformations.svg
+      :align: center
+      :width: 500
+
+      :matlab:`'sref'` element transformations. :attr:`data.uv_0 <Raith_element.data>` values for the transformed structures are marked with + signs.
+
+      A: Structure being referenced; B: :matlab:`data.mag = 2`; C: :matlab:`data.reflect = 1`; D: :matlab:`data.angle = 10`
+
+
+.. attention::
+
+   When :matlab:`'sref'` elements are plotted using the :meth:`Raith_element.plot` method, the origin is marked with a :red:`+` sign, labelled with :attr:`data.name <Raith_element.data>`:  since the structure being referenced is not part of the |RE| :matlab:`'sref'` object itself, the full hierarchy cannot be plotted.  To view the full hierarchy, the structure must be plotted using the :meth:`Raith_library.plot` method.
+
+.. rubric:: Example
+.. code-block:: matlab
+
+   E=Raith_element('sref','foo',[10 20],2,30);
+
+.. _sref_element:
+.. figure:: images/sref_element.svg
+   :align: center
+   :width: 500
+
+   Example :matlab:`'sref'` element, as plotted using the :meth:`Raith_element.plot` method
+
+
 
 Array reference element
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 :Description:  An array reference!
+
+
+Methods
+-------
+
+.. method:: Raith_element.plot()
 
 .. [1] See, e.g., `en.wikipedia.org/wiki/Ellipse <https://en.wikipedia.org/wiki/Ellipse>`_
