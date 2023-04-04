@@ -486,7 +486,7 @@ Methods
 
 .. method:: Raith_element.plot([M[,scDF]])
 
-   Plot |RE| object with default Raith dose factor colouring. Elements are displayed as filled polygons, where applicable (:matlab:`'polygon'`; :matlab:`'path'` with non-zero :attr:`data.w <Raith_element.data>`; :matlab:`'arc'`, :matlab:`'circle'`, and :matlab:`'ellipse'` with empty :attr:`data.w <Raith_element.data>`; :matlab:`'text'`).
+   Plot |RE| object with default :ref:`Raith dose factor colouring <RaithDF>`. Elements are displayed as filled polygons, where applicable (:matlab:`'polygon'`; :matlab:`'path'` with non-zero :attr:`data.w <Raith_element.data>`; :matlab:`'arc'`, :matlab:`'circle'`, and :matlab:`'ellipse'` with empty :attr:`data.w <Raith_element.data>`; :matlab:`'text'`).
 
    :Arguments: + **M** -- Augmented transformation matrix to be applied to element [optional]; see :meth:`Raith_library.trans`,   :meth:`Raith_library.rot`, :meth:`Raith_library.refl`, and :meth:`Raith_library.scale`.
                + **scDF** -- Overall multiplicative scaling factor for dose factor specified in :attr:`data.DF <Raith_element.data>` [optional]
@@ -521,5 +521,33 @@ Methods
       Text element plotted using the :meth:`Raith_element.plot` method
 
 
+.. method:: Raith_element.plotedges([M[,scDF]])
+
+   Plot |RE| object outlines with default :ref:`Raith dose factor colouring <RaithDF>`. Elements are displayed as unfilled polygons, where applicable (:matlab:`'polygon'`; :matlab:`'path'` with non-zero :attr:`data.w <Raith_element.data>`; :matlab:`'arc'`, :matlab:`'circle'`, and :matlab:`'ellipse'` with empty :attr:`data.w <Raith_element.data>`; :matlab:`'text'`).
+
+   :Arguments: + **M** -- Augmented transformation matrix to be applied to element [optional]; see :meth:`Raith_library.trans`,   :meth:`Raith_library.rot`, :meth:`Raith_library.refl`, and :meth:`Raith_library.scale`.
+               + **scDF** -- Overall multiplicative scaling factor for dose factor specified in :attr:`data.DF <Raith_element.data>` [optional]
+
+   :Returns: None
+
+   .. note::
+
+      Normally, :meth:`Raith_element.plotedges` is called without arguments. The optional arguments :matlab:`M` and :matlab:`scDF` are used internally, when :meth:`Raith_element.plotedges` is called by :meth:`Raith_structure.plotedges`, :meth:`Raith_library.plotedges`, or :meth:`Raith_positionlist.plotedges`.
+
+   Calling :meth:`Raith_element.plotedges` does not change the current axis scaling; issue an :matlab:`axis equal` command to ensure that the element is displayed in the figure correctly.
+
+   .. rubric:: Example
+   .. code-block:: matlab
+
+      E=Raith_element('text',0,[0 0],1,0,[0 2],'B',1.3);
+      E.plotedges;
+      axis equal;
+
+   .. _RE_plotedges:
+   .. figure:: images/RE_plotedges.svg
+      :align: center
+      :width: 500
+
+      Text element plotted using the :meth:`Raith_element.plotedges` method
 
 .. [1] See, e.g., `en.wikipedia.org/wiki/Ellipse <https://en.wikipedia.org/wiki/Ellipse>`_

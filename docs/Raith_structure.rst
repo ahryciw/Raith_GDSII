@@ -34,4 +34,6 @@ Properties
 Methods
 -------
 
-.. method:: Raith_structure.plot()
+.. method:: Raith_structure.plot([M[,scDF]]))
+
+.. method:: Raith_structure.plotedges([M[,scDF]]))

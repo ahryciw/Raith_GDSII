@@ -39,7 +39,9 @@ Properties
 Methods
 -------
 
-.. method:: Raith_library.plot()
+.. method:: Raith_library.plot([M[,scDF]]))
+
+.. method:: Raith_library.plotedges([M[,scDF]]))
 
 .. staticmethod:: Raith_library.trans()
 

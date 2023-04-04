@@ -30,4 +30,6 @@ Methods
 
 .. method:: Raith_positionlist.centre
 
-.. method:: Raith_positionlist.plot
+.. method:: Raith_positionlist.plot([M[,scDF]]))
+
+.. method:: Raith_positionlist.plotedges([M[,scDF]]))
