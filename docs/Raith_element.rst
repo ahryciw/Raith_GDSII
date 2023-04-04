@@ -11,11 +11,13 @@ The Raith_element class
 | :attr:`Raith_element.data` | Structure with fields defining element geometry |
 +----------------------------+-------------------------------------------------+
 
-+---------+
-| Methods |
-+=========+
-|         |
-+---------+
++---------------------------------+-----------------------------------+
+| Methods                                                             |
++=================================+===================================+
+| :meth:`Raith_element.plot`      | Plot element as filled polygons   |
++---------------------------------+-----------------------------------+
+| :meth:`Raith_element.plotedges` | Plot element as unfilled polygons |
++---------------------------------+-----------------------------------+
 
 .. class:: Raith_element
 
@@ -329,7 +331,7 @@ Text element
 FBMS path element
 ^^^^^^^^^^^^^^^^^
 
-:Description: Path of fixed beam moving stage (FBMS) line segments or arcs
+:Description: Path of fixed beam moving stage (FBMS/*traxx*) line segments or arcs
 :Constructor: :matlab:`E=Raith_element('fbmspath',layer,uv,cvtr,w,DF)`
 :Properties: + **type** --  :matlab:`'fbmspath'` (string)
              + **data.layer** -- GDSII layer (integer); allowed values are 0--63
@@ -357,7 +359,7 @@ FBMS path element
 FBMS circle element
 ^^^^^^^^^^^^^^^^^^^
 
-:Description: Fixed beam moving stage (FBMS) circle
+:Description: Fixed beam moving stage (FBMS/*traxx*) circle
 :Constructor: :matlab:`E=Raith_element('fbmscircle',layer,uv_c,r,w,DF)`
 :Properties: + **type** --  :matlab:`'fbmscircle'` (string)
              + **data.layer** -- GDSII layer (integer); allowed values are 0--63

@@ -727,13 +727,13 @@ classdef Raith_library < handle
                     Raith_library.writerec(FileID,13,2,ELE.data.layer);  % LAYER (0d02)
                     Raith_library.writerec(FileID,14,2,1000*ELE.data.DF);  % DATATYPE (0e02); 1000*DF
                     if isscalar(ELE.data.r)
-                        fflag=4; % Flag for unfilled circular disk segment
+                        fflag=4; % Flag for unfilled circular disc segment
                         r=[1 1]*ELE.data.r;
                     else
-                        fflag=5; % Flag for unfilled elliptical disk segment
+                        fflag=5; % Flag for unfilled elliptical disc segment
                         r=ELE.data.r;
                     end
-                    if isempty(ELE.data.w)  % Filled disk segment
+                    if isempty(ELE.data.w)  % Filled disc segment
                         fflag=fflag+2;  % Add 2 for filled segment
                     end
                     if ELE.data.w~=0  % Width specified
