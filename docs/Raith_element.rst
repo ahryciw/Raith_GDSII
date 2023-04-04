@@ -350,6 +350,34 @@ FBMS path element
    Element E1: :matlab:`data.cvtr = 0`; Element E2: :matlab:`data.cvtr = [0 0 0.2 0 −0.5]`
 
 
+FBMS circle element
+^^^^^^^^^^^^^^^^^^^
+
+:Description: Fixed beam moving stage (FBMS) circle
+:Constructor: :matlab:`E=Raith_element('fbmscircle',layer,uv_c,r,w,DF)`
+:Properties: + **type** --  :matlab:`'fbmscircle'` (string)
+             + **data.layer** -- GDSII layer (integer); allowed values are 0--63
+             + **data.uv_c** -- |FBMS| circle centre; 1 × 2 vector [*u*\ :sub:`c` \ *v*\ :sub:`c`] (µm)
+             + **data.r** -- Radius of |FBMS| circle (µm)
+             + **data.w** --  |FBMS| circle linewidth (µm); if zero, circle is a single-pixel line; if non-zero, circle has a width
+             + **data.DF** -- Dose factor for |FBMS| circle
+
+.. rubric:: Example
+.. code-block:: matlab
+
+   E1=Raith_element('fbmscircle',0,[0 0],1,0,1.3);
+   E2=Raith_element('fbmscircle',0,[3 0],1,0.2,1.3);
+
+.. _fbmscircle_element:
+.. figure:: images/fbmscircle_element.svg
+   :align: center
+   :width: 500
+
+   Example :matlab:`'fbmscircle'` elements
+
+   Element E1: :matlab:`data.w = 0`; Element E2: :matlab:`data.w = 0.2`
+
+
 
 Array reference element
 ^^^^^^^^^^^^^^^^^^^^^^^
