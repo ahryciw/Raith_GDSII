@@ -381,6 +381,7 @@ FBMS circle element
 
 Structure reference element
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 :Description: Reference to a named structure, with optional transformations
 :Constructor: :matlab:`E=Raith_element('sref',name,uv_0[,mag[,angle[,reflect]]])`
 :Properties: + **type** --  :matlab:`'sref'` (string)
@@ -425,7 +426,59 @@ Structure reference element
 Array reference element
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-:Description:  An array reference!
+:Description: Rectangular array of named structures, with optional transformations
+
+:Constructor: :matlab:`E=Raith_element('aref',name,uv_0,n_colrow,a_colrow[,mag[,angle[,reflect]]])`
+:Properties: + **type** --  :matlab:`'aref'` (string)
+             + **data.name** -- Name of structure being referenced (string)
+             + **data.uv_0** -- Structure origin; 1 × 2 vector [*u*\ :sub:`0` \ *v*\ :sub:`0`] (µm)
+             + **data.n_colrow** -- Number of columns and rows in array; 1 × 2 vector [*n*\ :sub:`columns` \ *n*\ :sub:`rows`]
+             + **data.a_colrow** -- Pitch of columns and rows; 1 × 2 vector [*a*\ :sub:`columns` \ *a*\ :sub:`rows`] (µm)
+             + **data.mag** -- Magnification (uniform scaling) factor [optional]; default is no magnification (:attr:`data.mag <Raith_element.data>` = 1)
+             + **data.angle** --  Angle of rotation with respect to origin, counter-clockwise positive (degrees) [optional]; default is no rotation (:attr:`data.angle <Raith_element.data>` = 0)
+             + **data.reflect** --  Boolean flag (0 or 1) for reflecting about *u*-axis before other transformations [optional]; default is no reflection (:attr:`data.reflect <Raith_element.data>` = 0)
+
+.. note::
+
+   Transformations are applied in the following order: 1. scaling, mirroring; 2. rotation; 3. translation.
+
+.. attention::
+
+   When :matlab:`'aref'` elements are plotted using the :meth:`Raith_element.plot` method, the origins of the instances are marked with :red:`+` signs, labelled with :attr:`data.name <Raith_element.data>`:  since the structure being referenced is not part of the |RE| :matlab:`'aref'` object itself, the full hierarchy cannot be plotted.  To view the full hierarchy, the structure must be plotted using the :meth:`Raith_library.plot` method.
+
+.. rubric:: Example
+.. code-block:: matlab
+
+   E=Raith_element('aref','foo',[10 20],[4 3],[3 2],[],30);
+
+.. _aref_element:
+.. figure:: images/aref_element.svg
+   :align: center
+   :width: 500
+
+   Example :matlab:`'aref'` element, as plotted using the :meth:`Raith_element.plot` method
+
+.. attention::
+
+   It is important to note that the Raith NanoSuite software interprets GDSII AREF elements differently than the GDSII specification suggests.  In particular, NanoSuite applies rotation operations *both* to the structures being referenced and the lattice vectors defining the rectangular array.  In contrast, the GDSII specification applies the rotation only to the structures; the lattice of origins for the referenced structures are fully specified using the number of rows and columns in addition to three anchor points which are calculated *after* all transformations have been applied.  This variation in interpretation can result in identical AREF elements appearing differently when viewed using the Raith NanoSuite software versus other GDSII editors, such as `KLayout <https://klayout.de/>`_; the following two figures illustrate this behaviour.
+
+.. _Raith_foo-aref:
+.. figure:: images/Raith_foo-aref.svg
+   :align: center
+   :width: 500
+
+   Raith interpretation of the AREF element in :numref:`aref_element`, for an L-shaped structure named :matlab:`'foo'`
+
+.. _KLayout_foo-aref:
+.. figure:: images/KLayout_foo-aref.svg
+   :align: center
+   :width: 500
+
+   KLayout interpretation of the AREF element in :numref:`aref_element`, for an L-shaped structure named :matlab:`'foo'`
+
+
+
+
 
 
 Methods
