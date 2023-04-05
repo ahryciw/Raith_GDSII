@@ -191,7 +191,7 @@ Arc element
 
    .. math:: \tan\theta=\frac{a}{b}\tan{\phi'}
 
-   Note that :math:`\theta=\phi'` for multiples of 90°. [1]_
+   Note that :math:`\theta=\phi'` for multiples of 90°.\ [1]_
 
    .. _arc_diagram:
    .. figure:: images/arc_diagram.svg

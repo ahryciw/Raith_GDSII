@@ -36,7 +36,7 @@ Public properties
 
 .. attribute:: Raith_structure.name
 
-   String specifying name of structure.  Maximum length is 127 characters.  Allowed characters are A--Z, a--z, 0--9, underscore (_), period (.), dollar sign ($), question mark (?), and hyphen (-).[1]_
+   String specifying name of structure.  Maximum length is 127 characters.  Allowed characters are A--Z, a--z, 0--9, underscore (_), period (.), dollar sign ($), question mark (?), and hyphen (-).\ [1]_
 
 
 
