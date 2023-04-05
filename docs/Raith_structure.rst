@@ -110,6 +110,36 @@ Methods
 
       Racetrack resonator structure plotted using the :meth:`Raith_structure.plot` method
 
+
 .. method:: Raith_structure.plotedges([M[,scDF]])
+
+   Plot |RS| object outlines with default :ref:`Raith dose factor colouring <RaithDF>`. Elements are displayed as unfilled polygons, where applicable (:matlab:`'polygon'`; :matlab:`'path'` with non-zero :attr:`data.w <Raith_element.data>`; :matlab:`'arc'`, :matlab:`'circle'`, and :matlab:`'ellipse'` with empty :attr:`data.w <Raith_element.data>`; :matlab:`'text'`). All elements in the structure are plotted, regardless of :attr:`data.layer <Raith_element.data>` value.
+
+   :Arguments: + **M** -- Augmented transformation matrix to be applied to structure [optional]; see :meth:`Raith_library.trans`,   :meth:`Raith_library.rot`, :meth:`Raith_library.refl`, and :meth:`Raith_library.scale`.
+               + **scDF** -- Overall multiplicative scaling factor applied to dose factors of all elements in structure [optional]
+
+   :Returns: None
+
+   .. note::
+
+      Normally, :meth:`Raith_structure.plotedges` is called without arguments, to display the |RS| object as it would appear in the |RNS| software. The optional arguments :matlab:`M` and :matlab:`scDF` are used internally, when :meth:`Raith_structure.plotedges` is called by :meth:`Raith_library.plotedges` or :meth:`Raith_positionlist.plotedges`.
+
+   Calling :meth:`Raith_structure.plotedges` does not change the current axis scaling; issue an :matlab:`axis equal` command to ensure that the structure is displayed in the figure correctly.
+
+   .. rubric:: Example
+
+   Given the |RS| object :matlab:`S` defined in the above :ref:`Constructor <RS_constructor_example>` section:
+
+   .. code-block:: matlab
+
+      S.plotedges;
+      axis equal;
+
+   .. _RS_plotedges:
+   .. figure:: images/RS_plotedges.svg
+      :align: center
+      :width: 500
+
+      Racetrack resonator structure plotted using the :meth:`Raith_structure.plotedges` method
 
 .. [1] The |RNS| software is somewhat more relaxed as regards structure names than the GDSII specification (Release 3.0), which does not allow periods or hyphens and has a maximum length of 32.
