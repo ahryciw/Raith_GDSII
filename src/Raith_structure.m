@@ -8,8 +8,8 @@ classdef Raith_structure < handle
 %
 % Arguments:
 %
-% name - string specifying name of structure; may be up to 127 characters
-%   long; allowed characters are A-Z, a-z, 0-9, _, ., $ ,?, and -.
+% name - character array specifying name of structure; may be up to 127 
+%   characters long; allowed characters are A-Z, a-z, 0-9, _, ., $ ,?, and -.
 % elements - array of Raith_element objects in structure
 %
 %
@@ -83,7 +83,7 @@ classdef Raith_structure < handle
         function set.name(obj,Name)
             
             if ~ischar(Name)
-                error('Raith_structure:  name must be a string.');
+                error('Raith_structure:  name must be a character array.');
             end
             
             if length(Name)>127

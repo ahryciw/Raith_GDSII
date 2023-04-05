@@ -90,16 +90,16 @@ classdef Raith_element < handle
 %       uv_align - alignment w.r.t. anchor point; 1 x 2 vector 
 %           [u_align v_align]; allowed values are 0 (left/top), 1 (centre),
 %           2 (right/bottom) 
-%       textlabel - the text to be written (string); allowed characters are
-%           `1234567890-=qwertyuiop[]\asdfghjkl;'zxcvbnm,./~
+%       textlabel - the text to be written (character array); allowed
+%           characters are `1234567890-=qwertyuiop[]\asdfghjkl;'zxcvbnm,./~
 %           !@#$%^&*()_+QWERTYUIOP{}|ASDFGHJKL:"ZXCVBNM<>?µ and [space]
 %       DF - dose factor for text
 %
 %   'fbmspath' (fixed beam moving stage path of line or arc segments)
 %       layer - GDSII layer for element (0-63)
 %       uv - path vertices; 2 x n matrix [u;v] (um)
-%       cvtr - curvature of path segments (um); if scalar and zero, the path 
-%           comprises line segments (no curvature); if a 1 x n vector, 
+%       cvtr - curvature of path segments (um); if scalar and zero, the
+%           path comprises line segments (no curvature); if a 1 x n vector,
 %           cvtr(k) yields a circular arc with chord endpoints of uv(:,k-1) 
 %           and uv(:,k) such that the radial distance between the arc and 
 %           the chord centre is cvtr(k); a positive (negative) value of 
@@ -122,7 +122,7 @@ classdef Raith_element < handle
 %   'sref' (structure reference)
 %   N.B.!  Transformations are applied in the following order: 1. scaling, 
 %   mirroring; 2. rotation; 3. insertion.
-%       name - name of structure being referenced (string)
+%       name - name of structure being referenced (character array)
 %       uv_0 - structure origin; 1 x 2 vector [u_0 v_0] (um)
 %       mag - magnification factor [optional]; default is no magnification
 %           (mag = 1)
@@ -139,7 +139,7 @@ classdef Raith_element < handle
 %   generated, then rotation is applied to this lattice (if specified).  At
 %   each of these lattice points, a structure is placed, after first being
 %   scaled and/or rotated.
-%       name - name of structure being referenced (string)
+%       name - name of structure being referenced (character array)
 %       uv_0 - structure origin; 1 x 2 vector [u_0 v_0] (um)
 %       n_colrow - 1 x 2 vector indicating number of columns and rows,
 %           respectively
@@ -710,15 +710,15 @@ classdef Raith_element < handle
                                 end
 
                             case 'name'
-                                % Check that name is a string
+                                % Check that name is a character array
                                 if ~ischar(Data.name)
-                                    error(['Raith_element ' obj.type ':  name must be a string.'])
+                                    error(['Raith_element ' obj.type ':  name must be a character array.'])
                                 end
 
                             case 'textlabel'
-                                % Check that textlabel is a string
+                                % Check that textlabel is a character array
                                 if ~ischar(Data.textlabel)
-                                    error('Raith_element text:  textlabel must be a string.')
+                                    error('Raith_element text:  textlabel must be a character array.')
                                 end
                                 % Check for illegal characters
                                 illegals=setdiff(Data.textlabel,obj.chars);
@@ -1305,7 +1305,7 @@ classdef Raith_element < handle
         % theta - angle of rotation of text w.r.t. positive x-axis (degrees)
         % u_align - alignment w.r.t. u_c:  0 (left), 1 (centre), 2 (right) 
         % v_align - alignment w.r.t. v_c:  0 (top), 1 (centre), 2 (bottom)
-        % textlabel - the text to be written (string)
+        % textlabel - the text to be written (character array)
         % layer - layer of GDSII file
         % DF - e-beam dose factor
         

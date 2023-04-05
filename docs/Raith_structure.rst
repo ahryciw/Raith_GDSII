@@ -52,7 +52,7 @@ Private set-access properties
 
 .. attribute:: Raith_structure.reflist
 
-   Cell array of structure names referenced by :matlab:`'sref'` or :matlab:`'aref'` elements within the structure. :attr:`reflist <Raith_structure.reflist>` is automatically updated whenever :attr:`elements <Raith_structure.elements>` is amended.
+   Cell array of structure names (character arrays) referenced by :matlab:`'sref'` or :matlab:`'aref'` elements within the structure. :attr:`reflist <Raith_structure.reflist>` is automatically updated whenever :attr:`elements <Raith_structure.elements>` is amended.
 
 
 

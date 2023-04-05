@@ -82,7 +82,7 @@ Polygon element
 
 :Description: Closed, filled polygon
 :Constructor: :matlab:`E=Raith_element('polygon',layer,uv,DF)`
-:Properties: + **type** --  :matlab:`'polygon'` (string)
+:Properties: + **type** --  :matlab:`'polygon'` (character array)
              + **data.layer** -- GDSII layer (integer); allowed values are 0--63
              + **data.uv** -- 2 × *n* matrix [*u*;\ *v*] of polygon vertices (µm)
              + **data.DF** -- Dose factor for polygon
@@ -110,7 +110,7 @@ Path element
 
 :Description: Path of line segments
 :Constructor: :matlab:`E=Raith_element('path',layer,uv,w,DF)`
-:Properties: + **type** --  :matlab:`'path'` (string)
+:Properties: + **type** --  :matlab:`'path'` (character array)
              + **data.layer** -- GDSII layer (integer); allowed values are 0--63
              + **data.uv** -- 2 × *n* matrix [*u*;\ *v*] of path vertices (µm)
              + **data.w** -- Width of path (µm); a value of zero yields single-pixel line; a negative value is considered to be the same as zero by the |RNS| software (single-pixel line)
@@ -141,7 +141,7 @@ Dot element
 
 :Description: Single-pixel dot(s)
 :Constructor: :matlab:`E=Raith_element('dot',layer,uv,DF)`
-:Properties: + **type** --  :matlab:`'dot'` (string)
+:Properties: + **type** --  :matlab:`'dot'` (character array)
              + **data.layer** -- GDSII layer (integer); allowed values are 0--63
              + **data.uv** -- 2 × *n* matrix [*u*;\ *v*] of dot positions (µm)
              + **data.DF** -- Dose factor(s) for dot(s); if scalar, all dots given in :attr:`data.uv <Raith_element.data>` have the same dose factor; if vector, :attr:`data.DF <Raith_element.data>` must be the same length as :attr:`data.uv <Raith_element.data>` and specifies the dose factor of each dot
@@ -167,7 +167,7 @@ Arc element
 
 :Description: Segment of circular or elliptical path (Raith curved element)
 :Constructor: :matlab:`E=Raith_element('arc',layer,uv_c,r,theta,angle,w,N,DF)`
-:Properties: + **type** --  :matlab:`'arc'` (string)
+:Properties: + **type** --  :matlab:`'arc'` (character array)
              + **data.layer** -- GDSII layer (integer); allowed values are 0--63
              + **data.uv_c** -- Arc centre; 1 × 2 vector [*u*\ :sub:`c` \ *v*\ :sub:`c`] (µm)
              + **data.r** -- Radius of arc; may be scalar for a circular arc, or a 1 × 2 vector denoting semi-axes, [*a b*], for an elliptical arc (µm)
@@ -222,7 +222,7 @@ Circle element
 
 :Description: Circle or circular disc (Raith curved element)
 :Constructor: :matlab:`E=Raith_element('circle',layer,uv_c,r,w,N,DF)`
-:Properties: + **type** --  :matlab:`'circle'` (string)
+:Properties: + **type** --  :matlab:`'circle'` (character array)
              + **data.layer** -- GDSII layer (integer); allowed values are 0--63
              + **data.uv_c** -- Circle centre; 1 × 2 vector [*u*\ :sub:`c` \ *v*\ :sub:`c`] (µm)
              + **data.r** -- Radius of circle (µm)
@@ -252,7 +252,7 @@ Ellipse element
 
 :Description: Ellipse or elliptical disk (Raith curved element)
 :Constructor: :matlab:`E=Raith_element('ellipse',layer,uv_c,r,w,angle,N,DF)`
-:Properties: + **type** --  :matlab:`'ellipse'` (string)
+:Properties: + **type** --  :matlab:`'ellipse'` (character array)
              + **data.layer** -- GDSII layer (integer); allowed values are 0--63
              + **data.uv_c** -- Ellipse centre; 1 × 2 vector [*u*\ :sub:`c` \ *v*\ :sub:`c`] (µm)
              + **data.r** -- Semi-axes of ellipse; 1 × 2 vector [*a b*] (µm); *a* corresponds to the semi-axis in the :attr:`data.angle <Raith_element.data>` direction
@@ -283,7 +283,7 @@ Text element
 
 :Description: Text rendered as simple polygons
 :Constructor: :matlab:`E=Raith_element('text',layer,uv_0,h,angle,uv_align,textlabel,DF)`
-:Properties: + **type** --  :matlab:`'text'` (string)
+:Properties: + **type** --  :matlab:`'text'` (character array)
              + **data.layer** -- GDSII layer (integer); allowed values are 0--63
              + **data.uv_0** -- Text anchor point; 1 × 2 vector [*u*\ :sub:`0` \ *v*\ :sub:`0`] (µm)
              + **data.h** -- Height of capital letters (µm)
@@ -292,7 +292,7 @@ Text element
 
                 .. image:: images/text_uv_align.svg
 
-             + **data.textlabel** -- Text to be written (string).  The allowed characters, shown as rendered, are:
+             + **data.textlabel** -- Text to be written (character array).  The allowed characters, shown as rendered, are:
 
                 .. image:: images/text_chars.svg
 
@@ -333,7 +333,7 @@ FBMS path element
 
 :Description: Path of fixed beam moving stage (FBMS/*traxx*) line segments or arcs
 :Constructor: :matlab:`E=Raith_element('fbmspath',layer,uv,cvtr,w,DF)`
-:Properties: + **type** --  :matlab:`'fbmspath'` (string)
+:Properties: + **type** --  :matlab:`'fbmspath'` (character array)
              + **data.layer** -- GDSII layer (integer); allowed values are 0--63
              + **data.uv** -- 2 × *n* matrix [*u*;\ *v*] of |FBMS| path vertices (µm)
              + **data.cvtr** -- Curvature of |FBMS| path segments (µm); if scalar and zero, the path comprises line segments (no curvature); if a 1 × *n* vector, :matlab:`data.cvtr(k)` yields a circular arc with chord endpoints of :matlab:`data.uv(:,k-1)` and :matlab:`data.uv(:,k)` such that the radial distance between the arc and the chord centre is :matlab:`data.cvtr(k)`; a positive (negative) value of :matlab:`data.cvtr(k)` corresponds to an arc to the left (right) of the chord; the value of :matlab:`data.cvtr(1)` is ignored if :matlab:`data.cvtr(k)` is 1 × *n*
@@ -361,7 +361,7 @@ FBMS circle element
 
 :Description: Fixed beam moving stage (FBMS/*traxx*) circle
 :Constructor: :matlab:`E=Raith_element('fbmscircle',layer,uv_c,r,w,DF)`
-:Properties: + **type** --  :matlab:`'fbmscircle'` (string)
+:Properties: + **type** --  :matlab:`'fbmscircle'` (character array)
              + **data.layer** -- GDSII layer (integer); allowed values are 0--63
              + **data.uv_c** -- |FBMS| circle centre; 1 × 2 vector [*u*\ :sub:`c` \ *v*\ :sub:`c`] (µm)
              + **data.r** -- Radius of |FBMS| circle (µm)
@@ -389,8 +389,8 @@ Structure reference element
 
 :Description: Reference to a named structure, with optional transformations
 :Constructor: :matlab:`E=Raith_element('sref',name,uv_0[,mag[,angle[,reflect]]])`
-:Properties: + **type** --  :matlab:`'sref'` (string)
-             + **data.name** -- Name of structure being referenced (string)
+:Properties: + **type** --  :matlab:`'sref'` (character array)
+             + **data.name** -- Name of structure being referenced (character array)
              + **data.uv_0** -- Structure origin; 1 × 2 vector [*u*\ :sub:`0` \ *v*\ :sub:`0`] (µm)
              + **data.mag** -- Magnification (uniform scaling) factor [optional]; default is no magnification (:attr:`data.mag <Raith_element.data>` = 1)
              + **data.angle** --  Angle of rotation with respect to origin, counter-clockwise positive (degrees) [optional]; default is no rotation (:attr:`data.angle <Raith_element.data>` = 0)
@@ -434,8 +434,8 @@ Array reference element
 :Description: Rectangular array of named structures, with optional transformations
 
 :Constructor: :matlab:`E=Raith_element('aref',name,uv_0,n_colrow,a_colrow[,mag[,angle[,reflect]]])`
-:Properties: + **type** --  :matlab:`'aref'` (string)
-             + **data.name** -- Name of structure being referenced (string)
+:Properties: + **type** --  :matlab:`'aref'` (character array)
+             + **data.name** -- Name of structure being referenced (character array)
              + **data.uv_0** -- Structure origin; 1 × 2 vector [*u*\ :sub:`0` \ *v*\ :sub:`0`] (µm)
              + **data.n_colrow** -- Number of columns and rows in array; 1 × 2 vector [*n*\ :sub:`columns` \ *n*\ :sub:`rows`]
              + **data.a_colrow** -- Pitch of columns and rows; 1 × 2 vector [*a*\ :sub:`columns` \ *a*\ :sub:`rows`] (µm)
