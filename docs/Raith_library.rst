@@ -3,13 +3,13 @@ The Raith_library class
 
 .. rubric:: Class overview:  :class:`Raith_library`
 
-+----------------------------------+-------------------------------------------+
-| Properties (public)                                                          |
-+==================================+===========================================+
-| :attr:`Raith_library.name`       | String specifying name of GDSII library   |
-+----------------------------------+-------------------------------------------+
-| :attr:`Raith_library.structures` | Array of |RS| objects in library          |
-+----------------------------------+-------------------------------------------+
++----------------------------------+--------------------------------------------------+
+| Properties (public)                                                                 |
++==================================+==================================================+
+| :attr:`Raith_library.name`       | Character array specifying name of GDSII library |
++----------------------------------+--------------------------------------------------+
+| :attr:`Raith_library.structures` | Array of |RS| objects in library                 |
++----------------------------------+--------------------------------------------------+
 
 +----------------------------------+----------------------------------------------+
 | Properties (private set access)                                                 |
@@ -81,6 +81,26 @@ Private set-access properties
 .. attribute:: Raith_library.structlist
 
    Ordered cell array of all names of structures (character arrays) found in library. :attr:`structlist <Raith_library.structlist>` is automatically updated whenever :attr:`structures <Raith_library.structures>` is amended.
+
+
+
+Constructor
+-----------
+
+:Constructor: :matlab:`L=Raith_library(name,structures)`
+:Arguments: + **name** --  Character array specifying name of structure.  Maximum length is 127 characters.   Allowed characters are A--Z, a--z, 0--9, underscore (_), period (.), dollar sign ($), question mark (?), and hyphen (-). Illegal characters are replaced with underscores (with a warning issued).
+            + **elements** -- Array of |RE| objects in structure.  |RE| arrays are created using standard MATLAB notation (see following **Example**).
+
+.. rubric:: Example
+.. _RS_constructor_example:
+.. code-block:: matlab
+
+   % Optical racetrack resonator
+   E(1)=Raith_element('arc',0,[2 0],3,[-90 90],0,0.3,200,1.3);
+   E(2)=Raith_element('arc',0,[-2 0],3,[90 270],0,0.3,200,1.3);
+   E(3)=Raith_element('path',0,[-2 2;3 3],0.3,1.3);
+   E(4)=Raith_element('path',0,[-2 2;-3 -3],0.3,1.3);
+   S=Raith_structure('racetrack',E);
 
 
 

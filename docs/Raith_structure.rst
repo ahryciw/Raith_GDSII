@@ -3,13 +3,13 @@ The Raith_structure class
 
 .. rubric:: Class overview:  :class:`Raith_structure`
 
-+----------------------------------+---------------------------------------+
-| Properties (public)                                                      |
-+==================================+=======================================+
-| :attr:`Raith_structure.name`     | String specifying name of structure   |
-+----------------------------------+---------------------------------------+
-| :attr:`Raith_structure.elements` | Array of |RE| objects in structure    |
-+----------------------------------+---------------------------------------+
++----------------------------------+----------------------------------------------+
+| Properties (public)                                                             |
++==================================+==============================================+
+| :attr:`Raith_structure.name`     | Character array specifying name of structure |
++----------------------------------+----------------------------------------------+
+| :attr:`Raith_structure.elements` | Array of |RE| objects in structure           |
++----------------------------------+----------------------------------------------+
 
 +---------------------------------+------------------------------------------+
 | Properties (private set access)                                            |
@@ -40,7 +40,7 @@ Public properties
 
 .. attribute:: Raith_structure.name
 
-   String specifying name of structure.  Maximum length is 127 characters.  Allowed characters are A--Z, a--z, 0--9, underscore (_), period (.), dollar sign ($), question mark (?), and hyphen (-).\ [1]_
+   Character array specifying name of structure.  Maximum length is 127 characters.  Allowed characters are A--Z, a--z, 0--9, underscore (_), period (.), dollar sign ($), question mark (?), and hyphen (-).\ [1]_
 
 .. attribute:: Raith_structure.elements
 
@@ -60,7 +60,7 @@ Constructor
 -----------
 
 :Constructor: :matlab:`S=Raith_structure(name,elements)`
-:Arguments: + **name** --  String specifying name of structure.  Maximum length is 127 characters.   Allowed characters are A--Z, a--z, 0--9, underscore (_), period (.), dollar sign ($), question mark (?), and hyphen (-). Illegal characters are replaced with underscores (with a warning issued).
+:Arguments: + **name** --  Character array specifying name of structure.  Maximum length is 127 characters.   Allowed characters are A--Z, a--z, 0--9, underscore (_), period (.), dollar sign ($), question mark (?), and hyphen (-). Illegal characters are replaced with underscores (with a warning issued).
             + **elements** -- Array of |RE| objects in structure.  |RE| arrays are created using standard MATLAB notation (see following **Example**).
 
 .. rubric:: Example

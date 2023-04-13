@@ -128,7 +128,7 @@ classdef Raith_positionlist < handle
         
         function set.csf_path(obj,csf_path)
             if ~ischar(csf_path)
-                error('Raith_positionlist:  csf_path must be a string.')
+                error('Raith_positionlist:  csf_path must be a character array.')
             end
             if ~strcmp(csf_path((end-3):end),'.csf')
                 error('Raith_positionlist:  csf_path must include .csf extension.')
@@ -378,7 +378,7 @@ classdef Raith_positionlist < handle
             % Write positionlist entries
                             
             for k=1:length(obj.poslist)
-                % Construct string for layers to expose:  multiple values are separated by '/'
+                % Construct character array for layers to expose:  multiple values are separated by '/'
                 layerstr=regexprep(num2str(obj.poslist(k).layers),'\s+','/');
                 plsline=sprintf('%d,0.000000,0.000000,0.000000,0.000000,0.000000,%.6f,%.6f,0.000000,XN,UV,%s,,EXPOSURE,%.3f,%.3f,,,,,%.3f,%.3f,,,%s,%s,%.3f;%.3f;%.3f;%.3f,%.3f,,,,,,,,,,,,,,',k-1,obj.poslist(k).uv_c(1),obj.poslist(k).uv_c(2),obj.poslist(k).name,obj.poslist(k).WA(3)-obj.poslist(k).WA(1),obj.poslist(k).WA(4)-obj.poslist(k).WA(2),obj.WF(1)/2,obj.WF(2)/2,obj.csf_path,layerstr,obj.poslist(k).WA(1),obj.poslist(k).WA(2),obj.poslist(k).WA(3),obj.poslist(k).WA(4),obj.poslist(k).DF);
                 fprintf(fid,'%s\r\n',plsline);
@@ -443,9 +443,9 @@ classdef Raith_positionlist < handle
                         switch posfields{k}
 
                             case 'name'
-                                % Check that name is a string
+                                % Check that name is a character array
                                 if ~ischar(Poslist.name)
-                                    errtxt=[errtxt sprintf('     Entry %d:  ''name'' must be a string.\n',kp)];
+                                    errtxt=[errtxt sprintf('     Entry %d:  ''name'' must be a character array.\n',kp)];
                                 end
                                 % Check whether name contains any commas; this would be caught in the next check unless data checking is turned off (since Raith_structure objects don't allow commas in their names)
                                 illchars=regexp(Poslist.name,'[^a-zA-Z_0-9\.\$\?-]');

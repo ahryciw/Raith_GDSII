@@ -6,7 +6,7 @@ The Raith_element class
 +----------------------------+-------------------------------------------------+
 | Properties (public)                                                          |
 +============================+=================================================+
-| :attr:`Raith_element.type` | String specifying type of element               |
+| :attr:`Raith_element.type` | Character array specifying type of element      |
 +----------------------------+-------------------------------------------------+
 | :attr:`Raith_element.data` | Structure with fields defining element geometry |
 +----------------------------+-------------------------------------------------+
@@ -30,7 +30,7 @@ Properties
 
 .. attribute:: Raith_element.type
 
-   String specifying type of element; allowed values are :matlab:`'polygon'`, :matlab:`'path'`, :matlab:`'dot'`, :matlab:`'arc'`, :matlab:`'circle'`, :matlab:`'ellipse'`, :matlab:`'text'`, :matlab:`'fbmspath'`, :matlab:`'fbmscircle'`, :matlab:`'sref'`, or :matlab:`'aref'`.
+   Character array specifying type of element; allowed values are :matlab:`'polygon'`, :matlab:`'path'`, :matlab:`'dot'`, :matlab:`'arc'`, :matlab:`'circle'`, :matlab:`'ellipse'`, :matlab:`'text'`, :matlab:`'fbmspath'`, :matlab:`'fbmscircle'`, :matlab:`'sref'`, or :matlab:`'aref'`.
 
 .. attribute:: Raith_element.data
 

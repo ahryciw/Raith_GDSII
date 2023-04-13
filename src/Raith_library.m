@@ -8,7 +8,7 @@ classdef Raith_library < handle
 %
 % Arguments:
 %
-% name - string specifying name of GDSII library, not including .csf
+% name - character array specifying name of GDSII library, not including .csf
 %   extension
 % structures - array of Raith_structure objects in library
 %
@@ -28,10 +28,10 @@ classdef Raith_library < handle
 %
 %   writegds([outdir],[dialect]) - write Raith GDSII hierarchy file of all
 %       structures as [library.name].csf
-%           outdir - string specifying directory in which to write .csf 
+%           outdir - character array specifying directory in which to write .csf
 %               file; if called without arguments, file is written to 
 %               working directory
-%           dialect - string specifying dialect of GDSII to write
+%           dialect - character array specifying dialect of GDSII to write
 %               [optional]; may be 'Raith' (default) or 'plain'; if 'plain' 
 %               is selected, Raith curved elements are converted to 
 %               boundary (polygon) or path elements, as appropriate
@@ -95,9 +95,9 @@ classdef Raith_library < handle
         function obj=Raith_library(name,structures)
             if nargin>0
                 
-                % Check that name is a string
+                % Check that name is a character array
                 if ~ischar(name)
-	                error('Raith_library:  name must be a string.');
+	                error('Raith_library:  name must be a character array.');
                 end
                 
                 obj.name=name;
@@ -125,7 +125,7 @@ classdef Raith_library < handle
         function set.name(obj,Name)
             
             if ~ischar(Name)
-                error('Raith_library:  name must be a string.');
+                error('Raith_library:  name must be a character array.');
             end
             
             if length(Name)>3 && (strcmpi(Name((end-3):end),'.csf') || strcmpi(Name((end-3):end),'.gds'))
@@ -195,10 +195,10 @@ classdef Raith_library < handle
         %
         %   Argument:
         %   
-        %       outdir - string specifying directory in which to write .csf file [optional]; 
+        %       outdir - character array specifying directory in which to write .csf file [optional];
         %           if called without arguments, file is written to working directory
         %
-        %       dialect - string specifying dialect of GDSII to write
+        %       dialect - character array specifying dialect of GDSII to write
         %           [optional]; may be 'Raith' (default) or 'plain'; if
         %           'plain' is selected, Raith curved elements are
         %           converted to boundary (polygon) or path elements, as
@@ -571,7 +571,7 @@ classdef Raith_library < handle
                 %       02 - 2-byte signed integer
                 %       03 - 4-byte signed integer
                 %       05 - 8-byte float
-                %       06 - ASCII string
+                %       06 - ASCII character array
                 % 	parameters - record parameters, of type defined by datatype
                 %
                 % The length of the record is computed, padded to an even
