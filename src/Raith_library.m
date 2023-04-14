@@ -334,7 +334,7 @@ classdef Raith_library < handle
             obj.writeendlib(FileID);  % End the library
             
             fclose(FileID);
-            fprintf(1,['GDSII library ' obj.name '.csf successfully written.\n\n']);
+            fprintf(1,['GDSII library ' obj.name ext ' successfully written.\n\n']);
             
         end % writegds
         

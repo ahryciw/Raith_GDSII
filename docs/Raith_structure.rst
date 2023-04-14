@@ -88,11 +88,12 @@ Methods
 
    :Returns: None
 
+   Calling :meth:`Raith_structure.plot` does not change the current axis scaling; issue an :matlab:`axis equal` command to ensure that the structure is displayed in the figure correctly.
+
    .. note::
 
       Normally, :meth:`Raith_structure.plot` is called without arguments, to display the |RS| object as it would appear in the |RNS| software. The optional arguments :matlab:`M` and :matlab:`scDF` are used internally, when :meth:`Raith_structure.plot` is called by :meth:`Raith_library.plot` or :meth:`Raith_positionlist.plot`.
 
-   Calling :meth:`Raith_structure.plot` does not change the current axis scaling; issue an :matlab:`axis equal` command to ensure that the structure is displayed in the figure correctly.
 
    .. rubric:: Example
 
@@ -120,11 +121,12 @@ Methods
 
    :Returns: None
 
+   Calling :meth:`Raith_structure.plotedges` does not change the current axis scaling; issue an :matlab:`axis equal` command to ensure that the structure is displayed in the figure correctly.
+
    .. note::
 
       Normally, :meth:`Raith_structure.plotedges` is called without arguments, to display the |RS| object as it would appear in the |RNS| software. The optional arguments :matlab:`M` and :matlab:`scDF` are used internally, when :meth:`Raith_structure.plotedges` is called by :meth:`Raith_library.plotedges` or :meth:`Raith_positionlist.plotedges`.
 
-   Calling :meth:`Raith_structure.plotedges` does not change the current axis scaling; issue an :matlab:`axis equal` command to ensure that the structure is displayed in the figure correctly.
 
    .. rubric:: Example
 
