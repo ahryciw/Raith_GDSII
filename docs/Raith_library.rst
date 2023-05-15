@@ -186,6 +186,7 @@ Methods
 
    Given the |RS| objects :matlab:`S` and :matlab:`lbl`, defined in :numref:`§%s <Raith_structure:Constructor>` and :numref:`§%s <Raith_library:Constructor>` section, respectively:
 
+   .. _RL_plot_example:
    .. code-block:: matlab
 
       % Racetrack resonator defined in Raith_structure object S
@@ -206,7 +207,6 @@ Methods
       clf;
       L.plot('labelled_racetrack');  % Figure 5.3
       axis equal;
-
 
    .. _RL_plot1:
    .. figure:: images/RL_plot1.svg
@@ -232,6 +232,37 @@ Methods
 
 
 .. method:: Raith_library.plotedges([M[,scDF]])
+
+   Plot outlines of structure in library with default :ref:`Raith dose factor colouring <RaithDF>`. Elements are displayed as unfilled polygons, where applicable (:matlab:`'polygon'`; :matlab:`'path'` with non-zero :attr:`data.w <Raith_element.data>`; :matlab:`'arc'`, :matlab:`'circle'`, and :matlab:`'ellipse'` with empty :attr:`data.w <Raith_element.data>`; :matlab:`'text'`).  All elements in the structure are plotted, regardless of :attr:`data.layer <Raith_element.data>` value. The full hierarchy of structures including :matlab:`'sref'` or :matlab:`'aref'` elements are displayed if all structures being referenced are present in the library.
+
+   :Arguments: + **structname** -- Character array specifying name of structure to be plotted (must be in :attr:`structlist <Raith_library.structlist>`)
+               + **M** -- Augmented transformation matrix to be applied to element [optional]; see :meth:`Raith_library.trans`,   :meth:`Raith_library.rot`, :meth:`Raith_library.refl`, and :meth:`Raith_library.scale`.
+               + **scDF** -- Overall multiplicative scaling factor applied to dose factors of all elements in structure [optional]
+
+   :Returns: None
+
+   Calling :meth:`Raith_library.plotedges` does not change the current axis scaling; issue an :matlab:`axis equal` command to ensure that the element is displayed in the figure correctly.
+
+   .. note::
+
+      Normally, :meth:`Raith_library.plotedges` is called without arguments, to display the structure as it would appear in the |RNS| software. The optional arguments :matlab:`M` and :matlab:`scDF` are used internally, when :meth:`Raith_library.plotedges` is called by :meth:`Raith_positionlist.plotedges`.
+
+   .. rubric:: Example
+
+   Given the |RL| object :matlab:`L` defined at the end of the :ref:`previous example <RL_plot_example>`:
+
+   .. code-block:: matlab
+
+      L.plotedges('labelled_racetrack');
+      axis equal;
+
+   .. _RL_plotedges:
+   .. figure:: images/RL_plotedges.svg
+      :align: center
+      :width: 500
+
+      Display resulting from :meth:`Raith_library.plotedges` method when all structures are present in library
+
 
 .. staticmethod:: Raith_library.trans()
 
