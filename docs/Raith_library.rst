@@ -264,7 +264,46 @@ Methods
       Display resulting from :meth:`Raith_library.plotedges` method when all structures are present in library
 
 
-.. staticmethod:: Raith_library.trans()
+Static methods
+--------------
+
+The methods in this section do not require an instance of the
+|RL| class to be called (static), and are generally used internally. Certain circumstances, however, may require the user to call them explicity (e.g., see :numref:`§%s <exttech:"on-the-fly" gdsii writing>`).
+
+.. staticmethod:: Raith_library.trans(p)
+
+   Return augemented matrix for translation.
+
+   :Arguments: **p** -- Translation vector; 1 × 2 vector [*p*\ :sub:`u` \ *p*\ :sub:`v`] (µm)
+
+   :Returns: **M** -- Augmented matrix for translation
+
+   .. note::
+
+      For translation by a vector :math:`\vec{p}`, the augmented matrix is
+
+      .. math::
+
+         \left[
+         \begin{matrix}
+           1 & 0 & p_u\\
+           0 & 1 & p_v\\
+           0 & 0 & 1
+          \end{matrix}\right]
+
+
+   .. rubric:: Example
+
+   .. code-block:: matlabsession
+
+      Raith_library.trans([10 20])
+
+      ans =
+
+           1     0    10
+           0     1    20
+           0     0     1
+
 
 .. staticmethod:: Raith_library.rot()
 
