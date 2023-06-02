@@ -272,7 +272,7 @@ The methods in this section do not require an instance of the
 
 .. staticmethod:: Raith_library.trans(p)
 
-   Return augemented matrix for translation.
+   Return augmented matrix for translation.
 
    :Arguments: **p** -- Translation vector; 1 × 2 vector [*p*\ :sub:`u` \ *p*\ :sub:`v`] (µm)
 
@@ -306,7 +306,7 @@ The methods in this section do not require an instance of the
 
 .. staticmethod:: Raith_library.rot(theta)
 
-   Return augemented matrix for rotation.
+   Return augmented matrix for rotation.
 
    :Arguments: **theta** -- Rotation angle, counter-clockwise positive (degrees)
 
@@ -340,7 +340,7 @@ The methods in this section do not require an instance of the
 
 .. staticmethod:: Raith_library.refl(n)
 
-   Return augemented matrix for reflection about *u*-axis *n* times.
+   Return augmented matrix for reflection about *u*-axis *n* times.
 
    :Arguments: **n** -- Number of times to reflect about *u*-axis
 
@@ -372,7 +372,39 @@ The methods in this section do not require an instance of the
            0     0     1
 
 
-.. staticmethod:: Raith_library.scale()
+.. staticmethod:: Raith_library.scale(mag)
+
+   Return augmented matrix for uniform scaling.
+
+   :Arguments: **mag** -- Uniform scaling factor
+
+   :Returns: **M** -- Augmented matrix for uniform scaling
+
+   .. note::
+
+      For uniform scaling by a factor *m*, the augmented matrix is
+
+      .. math::
+
+         \left[
+         \begin{matrix}
+            m & 0 & 0\\
+            0 & m & 0\\
+            0 & 0 & 1
+          \end{matrix}\right]
+
+   .. rubric:: Example
+
+   .. code-block:: matlabsession
+
+      Raith_library.scale(3)
+
+      ans =
+
+           3     0     0
+           0     3     0
+           0     0     1
+
 
 .. staticmethod:: Raith_library.writerec()
 
