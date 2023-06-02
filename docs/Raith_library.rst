@@ -338,7 +338,39 @@ The methods in this section do not require an instance of the
                0         0    1.0000
 
 
-.. staticmethod:: Raith_library.refl()
+.. staticmethod:: Raith_library.refl(n)
+
+   Return augemented matrix for reflection about *u*-axis *n* times.
+
+   :Arguments: **n** -- Number of times to reflect about *u*-axis
+
+   :Returns: **M** -- Augmented matrix for reflection
+
+   .. note::
+
+      For reflection about *u*-axis *n* times, the augmented matrix is
+
+      .. math::
+
+         \left[
+         \begin{matrix}
+            1 & 0 & 0\\
+            0 & (-1)^n & 0\\
+            0 & 0 & 1
+          \end{matrix}\right]
+
+   .. rubric:: Example
+
+   .. code-block:: matlabsession
+
+      Raith_library.refl(1)
+
+      ans =
+
+           1     0     0
+           0    -1     0
+           0     0     1
+
 
 .. staticmethod:: Raith_library.scale()
 
