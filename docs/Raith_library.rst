@@ -291,7 +291,6 @@ The methods in this section do not require an instance of the
            0 & 0 & 1
           \end{matrix}\right]
 
-
    .. rubric:: Example
 
    .. code-block:: matlabsession
@@ -305,7 +304,39 @@ The methods in this section do not require an instance of the
            0     0     1
 
 
-.. staticmethod:: Raith_library.rot()
+.. staticmethod:: Raith_library.rot(theta)
+
+   Return augemented matrix for rotation.
+
+   :Arguments: **theta** -- Rotation angle, counter-clockwise positive (degrees)
+
+   :Returns: **M** -- Augmented matrix for rotation
+
+   .. note::
+
+      For counter-clockwise rotation through an angle θ, the augmented matrix is
+
+      .. math::
+
+         \left[
+         \begin{matrix}
+           \cos\theta & \sin\theta & 0 \\
+           \sin\theta & \cos\theta & 0 \\
+           0 & 0 & 1
+          \end{matrix}\right]
+
+   .. rubric:: Example
+
+   .. code-block:: matlabsession
+
+      Raith_library.rot(30)
+
+      ans =
+
+          0.8660   -0.5000         0
+          0.5000    0.8660         0
+               0         0    1.0000
+
 
 .. staticmethod:: Raith_library.refl()
 
