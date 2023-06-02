@@ -1188,6 +1188,7 @@ classdef Raith_element < handle
                             vwr=[vwr UV_c(2)+R*sin(th)];
                         end
                     end
+                    UV=[uwr;vwr;ones(size(uwr))];
                         
                     if plflag~=2
                         if w==0 % Single-pixel line
@@ -1204,7 +1205,6 @@ classdef Raith_element < handle
                     
                     
                 case 'fbmscircle' 
-                    
                     mag=sqrt(abs(det(M)));  % Total magnification
                     w=abs(obj.data.w)*mag; % Defaults to positive (always scales) 
                     
