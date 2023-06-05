@@ -406,7 +406,107 @@ The methods in this section do not require an instance of the
            0     0     1
 
 
-.. staticmethod:: Raith_library.writerec()
+.. staticmethod:: Raith_library.writerec(FileID,rectype,datatype,parameters)
+
+   Write single GDSII record to file.
+
+   :Arguments: + **FileID** -- Integer file identifier obtained from MATLAB's :matlab:`fopen` function
+               + **rectype** -- GDSII record type, specified in decimal format; Table :numref:`table_rectypes` lists the record types used in the |RG| toolbox.
+               + **datatype** -- GDSII data type, specified in decimal format; Table :numref:`table_datatypes` lists the data types for the GDSII specification
+               + **parameters** -- Record parameters, of type defined by **datatype**
+
+   :Returns: None
+
+   .. _table_rectypes:
+   .. table:: GDSII record types, with values in hexadecimal and decimal format.  The latter is passed to :meth:`Raith_library.writerec` as the *rectype* argument.
+      :width: 100%
+
+      +-------------+------+-----+
+      | Record type | Hex  | Dec |
+      +=============+======+=====+
+      | HEADER      | 0x00 | 0   |
+      +-------------+------+-----+
+      | BGNLIB      | 0x01 | 1   |
+      +-------------+------+-----+
+      | LIBNAME     | 0x02 | 2   |
+      +-------------+------+-----+
+      | UNITS       | 0x03 | 3   |
+      +-------------+------+-----+
+      | ENDLIB      | 0x04 | 4   |
+      +-------------+------+-----+
+      | BGNSTR      | 0x05 | 5   |
+      +-------------+------+-----+
+      | STRNAME     | 0x06 | 6   |
+      +-------------+------+-----+
+      | ENDSTR      | 0x07 | 7   |
+      +-------------+------+-----+
+      | BOUNDARY    | 0x08 | 8   |
+      +-------------+------+-----+
+      | PATH        | 0x09 | 9   |
+      +-------------+------+-----+
+      | SREF        | 0x0A | 10  |
+      +-------------+------+-----+
+      | AREF        | 0x0B | 11  |
+      +-------------+------+-----+
+      | LAYER       | 0x0D | 13  |
+      +-------------+------+-----+
+      | DATATYPE    | 0x0E | 14  |
+      +-------------+------+-----+
+      | WIDTH       | 0x0F | 15  |
+      +-------------+------+-----+
+      | XY          | 0x10 | 16  |
+      +-------------+------+-----+
+      | SNAME       | 0x12 | 18  |
+      +-------------+------+-----+
+      | COLROW      | 0x13 | 19  |
+      +-------------+------+-----+
+      | STRANS      | 0x1A | 26  |
+      +-------------+------+-----+
+      | MAG         | 0x1B | 27  |
+      +-------------+------+-----+
+      | ANGLE       | 0x1C | 28  |
+      +-------------+------+-----+
+      | CURVED      | 0x56 | 86  |
+      +-------------+------+-----+
+      | FBMS        | 0x58 | 88  |
+      +-------------+------+-----+
+
+
+   .. _table_datatypes:
+   .. table:: GDSII data types, with values in hexadecimal and decimal format.  The latter is passed to :meth:`Raith_library.writerec` as the *datatype* argument.
+      :width: 100%
+
+      +-----------------------+------+-----+
+      | Data type             | Hex  | Dec |
+      +=======================+======+=====+
+      | No data present       | 0x00 | 0   |
+      +-----------------------+------+-----+
+      | Bit array (2 bytes)   | 0x01 | 1   |
+      +-----------------------+------+-----+
+      | 2-byte signed integer | 0x02 | 2   |
+      +-----------------------+------+-----+
+      | 4-byte signed integer | 0x03 | 3   |
+      +-----------------------+------+-----+
+      | 4-byte float          | 0x04 | 4   |
+      +-----------------------+------+-----+
+      | 8-byte float          | 0x05 | 5   |
+      +-----------------------+------+-----+
+      | ASCII string          | 0x06 | 6   |
+      +-----------------------+------+-----+
+
+   .. note::
+
+      Foo
+
+   .. rubric:: Example
+
+   .. code-block:: matlab
+
+      % Open a file for writing
+      FileID=fopen('test.csf','w');
+      % Write a BOUNDARY record, which contains no data
+      Raith_library.writerec(8,0,[]);
+
 
 .. staticmethod:: Raith_library.writehead()
 

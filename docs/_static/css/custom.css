@@ -7,3 +7,8 @@
 figcaption {
     text-align: left !important;
 }
+
+.docutils caption {
+  caption-side: bottom;
+  text-align: left !important;
+}
