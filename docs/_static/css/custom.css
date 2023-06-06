@@ -12,3 +12,11 @@ figcaption {
   caption-side: bottom;
   text-align: left !important;
 }
+
+.rst-content table.docutils caption,.rst-content table.field-list caption,.wy-table caption {
+  font: unset;
+}
+
+.caption-text {
+    font-style: italic;
+}

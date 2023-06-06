@@ -411,14 +411,14 @@ The methods in this section do not require an instance of the
    Write single GDSII record to file.
 
    :Arguments: + **FileID** -- Integer file identifier obtained from MATLAB's :matlab:`fopen` function
-               + **rectype** -- GDSII record type, specified in decimal format; Table :numref:`table_rectypes` lists the record types used in the |RG| toolbox.
-               + **datatype** -- GDSII data type, specified in decimal format; Table :numref:`table_datatypes` lists the data types for the GDSII specification
+               + **rectype** -- GDSII record type, specified in decimal format; :numref:`table_rectypes` lists the record types used in the |RG| toolbox.
+               + **datatype** -- GDSII data type, specified in decimal format; :numref:`table_datatypes` lists the data types for the GDSII specification
                + **parameters** -- Record parameters, of type defined by **datatype**
 
    :Returns: None
 
    .. _table_rectypes:
-   .. table:: GDSII record types, with values in hexadecimal and decimal format.  The latter is passed to :meth:`Raith_library.writerec` as the *rectype* argument.
+   .. table:: GDSII record types, with values in hexadecimal and decimal format.  The latter is passed to :meth:`Raith_library.writerec` as the **rectype** argument.
       :width: 100%
 
       +-------------+------+-----+
@@ -473,7 +473,7 @@ The methods in this section do not require an instance of the
 
 
    .. _table_datatypes:
-   .. table:: GDSII data types, with values in hexadecimal and decimal format.  The latter is passed to :meth:`Raith_library.writerec` as the *datatype* argument.
+   .. table:: GDSII data types, with values in hexadecimal and decimal format.  The latter is passed to :meth:`Raith_library.writerec` as the **datatype** argument.
       :width: 100%
 
       +-----------------------+------+-----+
