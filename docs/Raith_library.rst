@@ -3,55 +3,71 @@ The Raith_library class
 
 .. rubric:: Class overview:  :class:`Raith_library`
 
-+----------------------------------+--------------------------------------------------+
-| Properties (public)                                                                 |
-+==================================+==================================================+
-| :attr:`Raith_library.name`       | Character array specifying name of GDSII library |
-+----------------------------------+--------------------------------------------------+
-| :attr:`Raith_library.structures` | Array of |RS| objects in library                 |
-+----------------------------------+--------------------------------------------------+
+.. table::
+   :widths: 1 2
+   :width: 100%
 
-+----------------------------------+----------------------------------------------+
-| Properties (private set access)                                                 |
-+==================================+==============================================+
-| :attr:`Raith_library.structlist` | Cell array of all structure names in library |
-+----------------------------------+----------------------------------------------+
+   +----------------------------------+--------------------------------------------------+
+   | Properties (public)                                                                 |
+   +==================================+==================================================+
+   | :attr:`Raith_library.name`       | Character array specifying name of GDSII library |
+   +----------------------------------+--------------------------------------------------+
+   | :attr:`Raith_library.structures` | Array of |RS| objects in library                 |
+   +----------------------------------+--------------------------------------------------+
 
-+---------------------------------+--------------------------------------------------+
-| Methods                                                                            |
-+=================================+==================================================+
-| :meth:`Raith_library.append`    | Append |RS| object(s) to library                 |
-+---------------------------------+--------------------------------------------------+
-| :meth:`Raith_library.writegds`  | Output Raith GDSII hierarchy (.csf/.gds) file    |
-+---------------------------------+--------------------------------------------------+
-| :meth:`Raith_library.plot`      | Plot structure in library as filled polygons     |
-+---------------------------------+--------------------------------------------------+
-| :meth:`Raith_library.plotedges` | Plot structure in library as unfilled polygons   |
-+---------------------------------+--------------------------------------------------+
+.. table::
+   :widths: 1 2
+   :width: 100%
 
-+----------------------------------------+-------------------------------------------------------+
-| Static Methods                                                                                 |
-+========================================+=======================================================+
-| :meth:`Raith_library.trans`            | Return augmented matrix for translation               |
-+----------------------------------------+-------------------------------------------------------+
-| :meth:`Raith_library.rot`              | Return augmented matrix for rotation                  |
-+----------------------------------------+-------------------------------------------------------+
-| :meth:`Raith_library.refl`             | Return augmented matrix for reflection about *u*-axis |
-+----------------------------------------+-------------------------------------------------------+
-| :meth:`Raith_library.scale`            | Return augmented matrix for uniform scaling           |
-+----------------------------------------+-------------------------------------------------------+
-| :meth:`Raith_library.writerec`         | Write GDSII record to file                            |
-+----------------------------------------+-------------------------------------------------------+
-| :meth:`Raith_library.writehead`        | Write GDSII library header records                    |
-+----------------------------------------+-------------------------------------------------------+
-| :meth:`Raith_library.writeelement`     | Write GDSII element record(s)                         |
-+----------------------------------------+-------------------------------------------------------+
-| :meth:`Raith_library.writebeginstruct` | Write GDSII records to begin a structure              |
-+----------------------------------------+-------------------------------------------------------+
-| :meth:`Raith_library.writeendstruct`   | Write GDSII records to end a structure                |
-+----------------------------------------+-------------------------------------------------------+
-| :meth:`Raith_library.writeendlib`      | Write GDSII records to end a library                  |
-+----------------------------------------+-------------------------------------------------------+
+   +----------------------------------+----------------------------------------------+
+   | Properties (private set access)                                                 |
+   +==================================+==============================================+
+   | :attr:`Raith_library.structlist` | Cell array of all structure names in library |
+   +----------------------------------+----------------------------------------------+
+
+.. table::
+   :widths: 1 2
+   :width: 100%
+
+   +---------------------------------+--------------------------------------------------+
+   | Methods                                                                            |
+   +=================================+==================================================+
+   | :meth:`Raith_library.append`    | Append |RS| object(s) to library                 |
+   +---------------------------------+--------------------------------------------------+
+   | :meth:`Raith_library.writegds`  | Output Raith GDSII hierarchy (.csf/.gds) file    |
+   +---------------------------------+--------------------------------------------------+
+   | :meth:`Raith_library.plot`      | Plot structure in library as filled polygons     |
+   +---------------------------------+--------------------------------------------------+
+   | :meth:`Raith_library.plotedges` | Plot structure in library as unfilled polygons   |
+   +---------------------------------+--------------------------------------------------+
+
+.. table::
+   :widths: 1 2
+   :width: 100%
+
+   +----------------------------------------+-------------------------------------------------------+
+   | Static Methods                                                                                 |
+   +========================================+=======================================================+
+   | :meth:`Raith_library.trans`            | Return augmented matrix for translation               |
+   +----------------------------------------+-------------------------------------------------------+
+   | :meth:`Raith_library.rot`              | Return augmented matrix for rotation                  |
+   +----------------------------------------+-------------------------------------------------------+
+   | :meth:`Raith_library.refl`             | Return augmented matrix for reflection about *u*-axis |
+   +----------------------------------------+-------------------------------------------------------+
+   | :meth:`Raith_library.scale`            | Return augmented matrix for uniform scaling           |
+   +----------------------------------------+-------------------------------------------------------+
+   | :meth:`Raith_library.writerec`         | Write GDSII record to file                            |
+   +----------------------------------------+-------------------------------------------------------+
+   | :meth:`Raith_library.writehead`        | Write GDSII library header records                    |
+   +----------------------------------------+-------------------------------------------------------+
+   | :meth:`Raith_library.writeelement`     | Write GDSII element record(s)                         |
+   +----------------------------------------+-------------------------------------------------------+
+   | :meth:`Raith_library.writebeginstruct` | Write GDSII records to begin a structure              |
+   +----------------------------------------+-------------------------------------------------------+
+   | :meth:`Raith_library.writeendstruct`   | Write GDSII records to end a structure                |
+   +----------------------------------------+-------------------------------------------------------+
+   | :meth:`Raith_library.writeendlib`      | Write GDSII records to end a library                  |
+   +----------------------------------------+-------------------------------------------------------+
 
 .. class:: Raith_library
 
@@ -412,7 +428,7 @@ The methods in this section do not require an instance of the
 
    :Arguments: + **FileID** -- Integer file identifier obtained from MATLAB's :matlab:`fopen` function
                + **rectype** -- GDSII record type, specified in decimal format; :numref:`table_rectypes` lists the record types used in the |RG| toolbox.
-               + **datatype** -- GDSII data type, specified in decimal format; :numref:`table_datatypes` lists the data types for the GDSII specification
+               + **datatype** -- GDSII data type, specified in decimal format; :numref:`table_datatypes` lists the data types for the GDSII specification.
                + **parameters** -- Record parameters, of type defined by **datatype**
 
    :Returns: None

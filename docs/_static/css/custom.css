@@ -20,3 +20,7 @@ figcaption {
 .caption-text {
     font-style: italic;
 }
+
+.caption-number {
+    padding-right: 0.5em;
+}
