@@ -437,55 +437,55 @@ The methods in this section do not require an instance of the
    .. table:: GDSII record types, with values in hexadecimal and decimal format.  The latter is passed to :meth:`Raith_library.writerec` as the **rectype** argument.
       :width: 100%
 
-      +-------------+------+-----+
-      | Record type | Hex  | Dec |
-      +=============+======+=====+
-      | HEADER      | 0x00 | 0   |
-      +-------------+------+-----+
-      | BGNLIB      | 0x01 | 1   |
-      +-------------+------+-----+
-      | LIBNAME     | 0x02 | 2   |
-      +-------------+------+-----+
-      | UNITS       | 0x03 | 3   |
-      +-------------+------+-----+
-      | ENDLIB      | 0x04 | 4   |
-      +-------------+------+-----+
-      | BGNSTR      | 0x05 | 5   |
-      +-------------+------+-----+
-      | STRNAME     | 0x06 | 6   |
-      +-------------+------+-----+
-      | ENDSTR      | 0x07 | 7   |
-      +-------------+------+-----+
-      | BOUNDARY    | 0x08 | 8   |
-      +-------------+------+-----+
-      | PATH        | 0x09 | 9   |
-      +-------------+------+-----+
-      | SREF        | 0x0A | 10  |
-      +-------------+------+-----+
-      | AREF        | 0x0B | 11  |
-      +-------------+------+-----+
-      | LAYER       | 0x0D | 13  |
-      +-------------+------+-----+
-      | DATATYPE    | 0x0E | 14  |
-      +-------------+------+-----+
-      | WIDTH       | 0x0F | 15  |
-      +-------------+------+-----+
-      | XY          | 0x10 | 16  |
-      +-------------+------+-----+
-      | SNAME       | 0x12 | 18  |
-      +-------------+------+-----+
-      | COLROW      | 0x13 | 19  |
-      +-------------+------+-----+
-      | STRANS      | 0x1A | 26  |
-      +-------------+------+-----+
-      | MAG         | 0x1B | 27  |
-      +-------------+------+-----+
-      | ANGLE       | 0x1C | 28  |
-      +-------------+------+-----+
-      | CURVED      | 0x56 | 86  |
-      +-------------+------+-----+
-      | FBMS        | 0x58 | 88  |
-      +-------------+------+-----+
+      +--------------+------+-----+
+      | Record type  | Hex  | Dec |
+      +==============+======+=====+
+      | HEADER       | 0x00 | 0   |
+      +--------------+------+-----+
+      | BGNLIB       | 0x01 | 1   |
+      +--------------+------+-----+
+      | LIBNAME      | 0x02 | 2   |
+      +--------------+------+-----+
+      | UNITS        | 0x03 | 3   |
+      +--------------+------+-----+
+      | ENDLIB       | 0x04 | 4   |
+      +--------------+------+-----+
+      | BGNSTR       | 0x05 | 5   |
+      +--------------+------+-----+
+      | STRNAME      | 0x06 | 6   |
+      +--------------+------+-----+
+      | ENDSTR       | 0x07 | 7   |
+      +--------------+------+-----+
+      | BOUNDARY     | 0x08 | 8   |
+      +--------------+------+-----+
+      | PATH         | 0x09 | 9   |
+      +--------------+------+-----+
+      | SREF         | 0x0A | 10  |
+      +--------------+------+-----+
+      | AREF         | 0x0B | 11  |
+      +--------------+------+-----+
+      | LAYER        | 0x0D | 13  |
+      +--------------+------+-----+
+      | DATATYPE     | 0x0E | 14  |
+      +--------------+------+-----+
+      | WIDTH        | 0x0F | 15  |
+      +--------------+------+-----+
+      | XY           | 0x10 | 16  |
+      +--------------+------+-----+
+      | SNAME        | 0x12 | 18  |
+      +--------------+------+-----+
+      | COLROW       | 0x13 | 19  |
+      +--------------+------+-----+
+      | STRANS       | 0x1A | 26  |
+      +--------------+------+-----+
+      | MAG          | 0x1B | 27  |
+      +--------------+------+-----+
+      | ANGLE        | 0x1C | 28  |
+      +--------------+------+-----+
+      | CURVED\ [1]_ | 0x56 | 86  |
+      +--------------+------+-----+
+      | FBMS\ [2]_   | 0x58 | 88  |
+      +--------------+------+-----+
 
 
    .. _table_datatypes:
@@ -503,16 +503,12 @@ The methods in this section do not require an instance of the
       +-----------------------+------+-----+
       | 4-byte signed integer | 0x03 | 3   |
       +-----------------------+------+-----+
-      | 4-byte float          | 0x04 | 4   |
+      | 4-byte float\ [3]_    | 0x04 | 4   |
       +-----------------------+------+-----+
       | 8-byte float          | 0x05 | 5   |
       +-----------------------+------+-----+
       | ASCII string          | 0x06 | 6   |
       +-----------------------+------+-----+
-
-   .. note::
-
-      Foo
 
    .. rubric:: Example
 
@@ -539,3 +535,9 @@ The methods in this section do not require an instance of the
 .. staticmethod:: Raith_library.writerec()
 
 .. staticmethod:: Raith_library.writerec()
+
+.. [1] The Raith CURVED element record type is not part of the GDSII specification.  It is used by the |RNS| software to denote arc, ellipse, and circle elements.
+
+.. [2] The Raith FBMS element record type is also not part of standard GDSII.  It is used by the |RNS| software to denote fixed beam moving stage exposure.
+
+.. [3] The 4-byte float data type is listed as unused in the GDSII Stream Format Manual v6.0.
