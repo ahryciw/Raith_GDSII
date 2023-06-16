@@ -46,7 +46,7 @@ The Raith_library class
    :width: 100%
 
    +----------------------------------------+-------------------------------------------------------+
-   | Static Methods                                                                                 |
+   | Static Methods                         |                                                       |
    +========================================+=======================================================+
    | :meth:`Raith_library.trans`            | Return augmented matrix for translation               |
    +----------------------------------------+-------------------------------------------------------+
@@ -62,7 +62,7 @@ The Raith_library class
    +----------------------------------------+-------------------------------------------------------+
    | :meth:`Raith_library.writebeginstruct` | Write GDSII records to begin a structure              |
    +----------------------------------------+-------------------------------------------------------+
-   | :meth:`Raith_library.writeelement`     | Write GDSII element record(s)                         |
+   | :meth:`Raith_library.writeelement`     | Write GDSII element records                           |
    +----------------------------------------+-------------------------------------------------------+
    | :meth:`Raith_library.writeendstruct`   | Write GDSII records to end a structure                |
    +----------------------------------------+-------------------------------------------------------+
