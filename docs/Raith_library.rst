@@ -60,9 +60,9 @@ The Raith_library class
    +----------------------------------------+-------------------------------------------------------+
    | :meth:`Raith_library.writehead`        | Write GDSII library header records                    |
    +----------------------------------------+-------------------------------------------------------+
-   | :meth:`Raith_library.writeelement`     | Write GDSII element record(s)                         |
-   +----------------------------------------+-------------------------------------------------------+
    | :meth:`Raith_library.writebeginstruct` | Write GDSII records to begin a structure              |
+   +----------------------------------------+-------------------------------------------------------+
+   | :meth:`Raith_library.writeelement`     | Write GDSII element record(s)                         |
    +----------------------------------------+-------------------------------------------------------+
    | :meth:`Raith_library.writeendstruct`   | Write GDSII records to end a structure                |
    +----------------------------------------+-------------------------------------------------------+
@@ -155,9 +155,9 @@ Methods
 
 .. method:: Raith_library.writegds([outdir[,dialect]])
 
-   Write Raith GDSII hierarchy of all structures to file ⟨:attr:`name <Raith_library.name>`⟩.\ *csf* (:matlab:`'Raith'` dialect) or ⟨:attr:`name <Raith_library.name>`⟩.\ *gds* (:matlab:`'plain'` dialect).
+   Write Raith GDSII hierarchy of all structures to file :attr:`name <Raith_library.name>`.\ *csf* (:matlab:`'Raith'` dialect) or :attr:`name <Raith_library.name>`.\ *gds* (:matlab:`'plain'` dialect).
 
-   :Arguments: + **outdir** -- Character array specifying directory in which to write .csf file [optional]; if called without arguments, file is written to working directory.
+   :Arguments: + **outdir** -- Character array specifying directory in which to write .csf/.gds file [optional]; if called without arguments, file is written to working directory.
                + **dialect** -- Character array specifying dialect of GDSII to write [optional]; may be :matlab:`'Raith'` (default) or :matlab:`'plain'` (readable by non-Raith GDSII viewers/editors).
 
    :Returns: None
@@ -520,21 +520,120 @@ The methods in this section do not require an instance of the
       Raith_library.writerec(8,0,[]);
 
 
-.. staticmethod:: Raith_library.writehead()
+.. staticmethod:: Raith_library.writehead(FileID,name)
 
-.. staticmethod:: Raith_library.writeelement()
+   Write GDSII library header records.
 
-.. staticmethod:: Raith_library.writebeginstruct()
+   :Arguments: + **FileID** -- Integer file identifier obtained from MATLAB's :matlab:`fopen` function
+               + **name** -- GDSII library name, without .csf/.gds extension (character array)
 
-.. staticmethod:: Raith_library.writeendstruct()
+   :Returns: None
 
-.. staticmethod:: Raith_library.writeendlib()
+   .. note::
 
-.. staticmethod:: Raith_library.writerec()
+      This method writes the HEADER, BGNLIB, LIBNAME, and UNITS records.  The current system time is used for the BGNLIB record.  1 μm and 1 nm are used for the user and database units, respectively, in the UNITS record.
 
-.. staticmethod:: Raith_library.writerec()
+   .. rubric:: Example
 
-.. staticmethod:: Raith_library.writerec()
+   .. code-block:: matlab
+
+      % Open a file for writing
+      FileID=fopen('test.csf','w');
+      % Write GDSII header information
+      Raith_library.writehead(FileID,'test');
+
+
+.. staticmethod:: Raith_library.writebeginstruct(FileID,name)
+
+   Write GDSII records to begin a structure.
+
+   :Arguments: + **FileID** -- Integer file identifier obtained from MATLAB's :matlab:`fopen` function
+               + **name** -- Name of structure (character array)
+
+   :Returns: None
+
+   .. note::
+
+      This method writes the BGNSTR and STRNAME records.  The current system time is used for BGNSTR.
+
+   .. rubric:: Example
+
+   .. code-block:: matlab
+
+      % Open a file for writing
+      FileID=fopen('test.csf','w');
+      Raith_library.writebeginstruct(FileID,'waveguide');
+
+
+.. staticmethod:: Raith_library.writeelement(FileID,element)
+
+   Write GDSII element records.
+
+   :Arguments: + **FileID** -- Integer file identifier obtained from MATLAB's :matlab:`fopen` function
+               + **element** -- |RE| object to be written
+
+   :Returns: None
+
+   .. note::
+
+      The GDSII record types written vary according to the type of element.
+
+   .. rubric:: Example
+
+   .. code-block:: matlab
+
+      % Open a file for writing
+      FileID=fopen('test.csf','w');
+      % Define an element
+      E=Raith_element('path',0,[0 1 1;0 0 1],0.2,1);
+      Raith_library.writeelement(FileID,E);
+
+
+.. staticmethod:: Raith_library.writeendstruct(FileID)
+
+   Write GDSII record to end a structure.
+
+
+   :Arguments: **FileID** -- Integer file identifier obtained from MATLAB's :matlab:`fopen` function
+
+   :Returns: None
+
+   .. note::
+
+      This method writes the ENDSTR record, which has no parameters.
+
+   .. rubric:: Example
+
+   .. code-block:: matlab
+
+      % Open a file for writing
+      FileID=fopen('test.csf','w');
+      Raith_library.writeendstruct(FileID);
+
+
+.. staticmethod:: Raith_library.writeendlib(FileID)
+
+   Write GDSII record to end a library.
+
+
+   :Arguments: **FileID** -- Integer file identifier obtained from MATLAB's :matlab:`fopen` function
+
+   :Returns: None
+
+   .. note::
+
+      This method writes the ENDLIB record, which has no parameters.
+
+   .. rubric:: Example
+
+   .. code-block:: matlab
+
+      % Open a file for writing
+      FileID=fopen('test.csf','w');
+      Raith_library.writeendlib(FileID);
+
+
+
 
 .. [1] The Raith CURVED element record type is not part of the GDSII specification.  It is used by the |RNS| software to denote arc, ellipse, and circle elements.
 
