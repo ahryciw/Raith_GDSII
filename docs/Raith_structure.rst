@@ -105,7 +105,7 @@ Methods
 
    .. note::
 
-      Normally, :meth:`Raith_structure.plot` is called without arguments, to display the |RS| object as it would appear in the |RNS| software. The optional arguments :matlab:`M` and :matlab:`scDF` are used internally, when :meth:`Raith_structure.plot` is called by :meth:`Raith_library.plot` or :meth:`Raith_positionlist.plot`.
+      Normally, :meth:`Raith_structure.plot` is called without arguments, to display the |RS| object as it would appear in the |RNS| software. The optional arguments **M** and **scDF** are used internally, when :meth:`Raith_structure.plot` is called by :meth:`Raith_library.plot` or :meth:`Raith_positionlist.plot`.
 
 
    .. rubric:: Example
@@ -138,7 +138,7 @@ Methods
 
    .. note::
 
-      Normally, :meth:`Raith_structure.plotedges` is called without arguments, to display the |RS| object as it would appear in the |RNS| software. The optional arguments :matlab:`M` and :matlab:`scDF` are used internally, when :meth:`Raith_structure.plotedges` is called by :meth:`Raith_library.plotedges` or :meth:`Raith_positionlist.plotedges`.
+      Normally, :meth:`Raith_structure.plotedges` is called without arguments, to display the |RS| object as it would appear in the |RNS| software. The optional arguments **M** and **scDF** are used internally, when :meth:`Raith_structure.plotedges` is called by :meth:`Raith_library.plotedges` or :meth:`Raith_positionlist.plotedges`.
 
 
    .. rubric:: Example

@@ -514,7 +514,7 @@ Methods
 
    .. note::
 
-      Normally, :meth:`Raith_element.plot` is called without arguments, to display the |RE| object as it would appear in the |RNS| software. The optional arguments :matlab:`M` and :matlab:`scDF` are used internally, when :meth:`Raith_element.plot` is called by :meth:`Raith_structure.plot`, :meth:`Raith_library.plot`, or :meth:`Raith_positionlist.plot`.
+      Normally, :meth:`Raith_element.plot` is called without arguments, to display the |RE| object as it would appear in the |RNS| software. The optional arguments **M** and **scDF** are used internally, when :meth:`Raith_element.plot` is called by :meth:`Raith_structure.plot`, :meth:`Raith_library.plot`, or :meth:`Raith_positionlist.plot`.
 
    .. rubric:: Example
    .. code-block:: matlab
@@ -544,7 +544,7 @@ Methods
 
    .. note::
 
-      Normally, :meth:`Raith_element.plotedges` is called without arguments. The optional arguments :matlab:`M` and :matlab:`scDF` are used internally, when :meth:`Raith_element.plotedges` is called by :meth:`Raith_structure.plotedges`, :meth:`Raith_library.plotedges`, or :meth:`Raith_positionlist.plotedges`.
+      Normally, :meth:`Raith_element.plotedges` is called without arguments. The optional arguments **M** and **scDF** are used internally, when :meth:`Raith_element.plotedges` is called by :meth:`Raith_structure.plotedges`, :meth:`Raith_library.plotedges`, or :meth:`Raith_positionlist.plotedges`.
 
    .. rubric:: Example
    .. code-block:: matlab
