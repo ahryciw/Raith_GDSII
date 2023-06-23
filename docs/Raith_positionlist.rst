@@ -125,6 +125,7 @@ Methods
 
    Given the |RL| and |RP| objects :matlab:`L` and :matlab:`P`, respectively, defined in the above :ref:`Constructor <RP_constructor_example>` section:
 
+   .. _RP_append_example:
    .. code-block:: matlab
 
       % Write a racetrack resonator and label near the top−left corner of the chip (100 µm WF)
@@ -134,7 +135,7 @@ Methods
 
 .. method:: Raith_positionlist.plot()
 
-   Plot all structures in positionlist with default :ref:`Raith dose factor colouring <RaithDF>`, with chip outline. Elements are displayed as filled polygons, where applicable (:matlab:`'polygon'`; :matlab:`'path'` with non-zero :attr:`data.w <Raith_element.data>`; :matlab:`'arc'`, :matlab:`'circle'`, and :matlab:`'ellipse'` with empty :attr:`data.w <Raith_element.data>`; :matlab:`'text'`).  All elements in the structure are plotted, regardless of :attr:`data.layer <Raith_element.data>` value.  The full hierarchy of structures including :matlab:`'sref'` or :matlab:`'aref'` elements are displayed if all structures being referenced are present in the library contained in the |RP| object.
+   Plot all structures in positionlist with default :ref:`Raith dose factor colouring <RaithDF>`, with chip outline. Elements are displayed as filled polygons, where applicable (:matlab:`'polygon'`; :matlab:`'path'` with non-zero :attr:`data.w <Raith_element.data>`; :matlab:`'arc'`, :matlab:`'circle'`, and :matlab:`'ellipse'` with empty :attr:`data.w <Raith_element.data>`; :matlab:`'text'`).  All elements in the structure are plotted, regardless of :attr:`data.layer <Raith_element.data>` value.  The full hierarchy of structures including :matlab:`'sref'` or :matlab:`'aref'` elements is displayed if all structures being referenced are present in the library contained in the |RP| object.
 
    :Arguments: None
 
@@ -146,7 +147,7 @@ Methods
 
    .. rubric:: Example
 
-   Given the |RP| object :matlab:`P` defined in :numref:`§%s <Raith_positionlist:Constructor>`, above:
+   Given the |RP| object :matlab:`P` defined :ref:`above <RP_append_example>`:
 
    .. code-block:: matlab
 
@@ -160,4 +161,30 @@ Methods
 
       Positionlist plotted using the :meth:`Raith_positionlist.plot` method
 
-.. method:: Raith_positionlist.plotedges([M[,scDF]]))
+.. method:: Raith_positionlist.plotedges()
+
+   Plot outlines of all structures in positionlist with default :ref:`Raith dose factor colouring <RaithDF>`, with chip outline. Elements are displayed as unfilled polygons, where applicable (:matlab:`'polygon'`; :matlab:`'path'` with non-zero :attr:`data.w <Raith_element.data>`; :matlab:`'arc'`, :matlab:`'circle'`, and :matlab:`'ellipse'` with empty :attr:`data.w <Raith_element.data>`; :matlab:`'text'`).  All elements in the structure are plotted, regardless of :attr:`data.layer <Raith_element.data>` value.  The full hierarchy of structures including :matlab:`'sref'` or :matlab:`'aref'` elements is displayed if all structures being referenced are present in the library contained in the |RP| object.
+
+   :Arguments: None
+
+   :Returns: None
+
+   .. note::
+
+      Calling :meth:`Raith_positionlist.plotedges` sets the axis scaling to equal; all plotted objects therefore appear with correct, uniform scaling.  The axes are in units of µm.
+
+   .. rubric:: Example
+
+   Given the |RP| object :matlab:`P` defined :ref:`above <RP_append_example>`:
+
+   .. code-block:: matlab
+
+      P.plotedges;  % Structures are too small to see at this scale
+      axis([990 1010 3990 4010]);  % Zoom to structures
+
+   .. _RP_plotedges:
+   .. figure:: images/RP_plotedges.svg
+      :align: center
+      :width: 500
+
+      Positionlist plotted using the :meth:`Raith_positionlist.plotedges` method
