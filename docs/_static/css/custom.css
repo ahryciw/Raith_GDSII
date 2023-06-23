@@ -4,6 +4,10 @@
     color: red;
 }
 
+.green {
+    color: green;
+}
+
 figcaption {
     text-align: left !important;
 }

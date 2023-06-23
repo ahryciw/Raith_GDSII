@@ -147,7 +147,7 @@ Methods
 
    .. rubric:: Example
 
-   Given the |RP| object :matlab:`P` defined :ref:`above <RP_append_example>`:
+   Given the |RP| object :matlab:`P` defined in the above :meth:`Raith_positionlist.append` :ref:`Example <RP_append_example>`:
 
    .. code-block:: matlab
 
@@ -176,7 +176,7 @@ Methods
 
    .. rubric:: Example
 
-   Given the |RP| object :matlab:`P` defined :ref:`above <RP_append_example>`:
+   Given the |RP| object :matlab:`P` defined in the above :meth:`Raith_positionlist.append` :ref:`Example <RP_append_example>`:
 
    .. code-block:: matlab
 
@@ -217,6 +217,37 @@ Methods
 
    .. _RP_plotWA:
    .. figure:: images/RP_plotWA.svg
+      :align: center
+      :width: 500
+
+      Working areas in positionlist plotted using the :meth:`Raith_positionlist.plotWA` method
+
+
+.. method:: Raith_positionlist.plotWF()
+
+   Plot writefields of all structures in positionlist in dotted green lines; writefield centres are marked with a :green:`+` sign.
+
+   :Arguments: None
+
+   :Returns: None
+
+   .. note::
+
+      Calling :meth:`Raith_positionlist.plotWF` sets the axis scaling to equal; all writefields therefore appear with correct, uniform scaling.
+
+   .. rubric:: Example
+
+   Given all objects defined in the above :meth:`Raith_positionlist.plotWA` :ref:`Example <RP_append_example>`:
+
+   .. code-block:: matlab
+
+      P.plot;  % Plot structures
+      P.plotWA;  % Plot working areas
+      P.plotWF;  % Plot writefields
+      axis([940 1050 3950 4055]);  % Zoom to structures
+
+   .. _RP_plotWF:
+   .. figure:: images/RP_plotWF.svg
       :align: center
       :width: 500
 
