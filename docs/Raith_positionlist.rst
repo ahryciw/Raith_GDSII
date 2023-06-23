@@ -161,6 +161,7 @@ Methods
 
       Positionlist plotted using the :meth:`Raith_positionlist.plot` method
 
+
 .. method:: Raith_positionlist.plotedges()
 
    Plot outlines of all structures in positionlist with default :ref:`Raith dose factor colouring <RaithDF>`, with chip outline. Elements are displayed as unfilled polygons, where applicable (:matlab:`'polygon'`; :matlab:`'path'` with non-zero :attr:`data.w <Raith_element.data>`; :matlab:`'arc'`, :matlab:`'circle'`, and :matlab:`'ellipse'` with empty :attr:`data.w <Raith_element.data>`; :matlab:`'text'`).  All elements in the structure are plotted, regardless of :attr:`data.layer <Raith_element.data>` value.  The full hierarchy of structures including :matlab:`'sref'` or :matlab:`'aref'` elements is displayed if all structures being referenced are present in the library contained in the |RP| object.
@@ -188,3 +189,35 @@ Methods
       :width: 500
 
       Positionlist plotted using the :meth:`Raith_positionlist.plotedges` method
+
+
+.. method:: Raith_positionlist.plotWA()
+
+   Plot working area of all structures in positionlist in dotted blue lines, with chip outline.
+
+   :Arguments: None
+
+   :Returns: None
+
+   .. note::
+
+      Calling :meth:`Raith_positionlist.plotWA` sets the axis scaling to equal; all working areas therefore appear with correct, uniform scaling.
+
+   .. rubric:: Example
+
+   To illustrate the alignment of working areas and writefields, this example specifies working areas which are smaller than the writefield. Assume the |RL| and |RP| objects :matlab:`L` and :matlab:`P`, respectively, are defined as in :numref:`§%s <Raith_positionlist:Constructor>`; to preserve the relative alignment of the racetrack and the label, **uv_c** must be changed to accommodate the difference in WA:
+
+   .. code-block:: matlab
+
+      P.append('racetrack',[1 4],1,[−10 −10 20 10]);
+      P.append('radius_label',[0.99 4.001],1,[−20 −5 10 5]);
+      P.plot; % Plot structures
+      P.plotWA; % Plot working areas
+      axis([935 985 3945 3975]); % Zoom to structures
+
+   .. _RP_plotWA:
+   .. figure:: images/RP_plotWA.svg
+      :align: center
+      :width: 500
+
+      Working areas in positionlist plotted using the :meth:`Raith_positionlist.plotWA` method
