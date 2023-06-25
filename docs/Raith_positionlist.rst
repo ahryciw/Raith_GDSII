@@ -320,3 +320,28 @@ Methods
       :width: 500
 
       Position of writefields (a) before shifting, (b) after issuing :matlab:`P.shift([1 -2])`
+
+
+.. method:: Raith_positionlist.writepls([filepath])
+
+   Write positionlist to file.
+
+   :Arguments: **filepath** -- Full path of positionlist file to be written, including .pls extension [optional]
+
+   :Returns: None
+
+   .. note::
+
+      If called without argument, a :attr:`Raith_library.name`.\ *pls* file is written to the current directory.
+
+   .. rubric:: Example
+
+   Given the |RP| object defined in the above :meth:`Raith_positionlist.plotWA` :ref:`Example <RP_plotWA_example>`:
+
+   .. _RP_writepls_example:
+   .. code-block:: matlabsession
+
+      P.writepls;
+
+      Writing /Users/Public/Documents/resonators.pls...
+      Positionlist resonators.pls successfully written.
