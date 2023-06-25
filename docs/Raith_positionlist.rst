@@ -341,7 +341,7 @@ Methods
    .. _RP_writepls_example:
    .. code-block:: matlabsession
 
-      P.writepls;
+      >> P.writepls;
 
       Writing /Users/Public/Documents/resonators.pls...
       Positionlist resonators.pls successfully written.
