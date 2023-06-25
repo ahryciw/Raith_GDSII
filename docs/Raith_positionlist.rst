@@ -289,3 +289,34 @@ Methods
       :width: 500
 
       Position of writefields (a) before centring, (b) after issuing :matlab:`P.centre`, and (c) after issuing :matlab:`P.centre([4 5])`
+
+
+.. method:: Raith_positionlist.shift(uv_sh)
+
+   Shift current positionlist entries on the chip, preserving relative spacing.
+
+   :Arguments: **uv_sh** -- Relative shift of the new positionlist entries with respect to their current positions (mm); 1 × 2 vector [*u*\ :sub:`sh` \ *v*\ :sub:`sh`]  (mm)
+
+   :Returns: None
+
+   .. note::
+
+      The :attr:`poslist <Raith_positionlist.poslist>` property is overwritten when :meth:`Raith_positionlist.shift` is invoked; there is no built-in way of undoing this operation.
+
+   .. rubric:: Example
+
+   Given the |RP| object defined in the above :meth:`Raith_positionlist.plotWA` :ref:`Example <RP_plotWA_example>`:
+
+   .. _RP_shift_example:
+   .. code-block:: matlab
+
+      P.plotWF; % Before shifting
+      P.shift([1 −2]);
+      P.plotWF; % After shifting
+
+   .. _RP_shift:
+   .. figure:: images/RP_shift.svg
+      :align: center
+      :width: 500
+
+      Position of writefields (a) before shifting, (b) after issuing :matlab:`P.shift([1 -2])`
