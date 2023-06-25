@@ -128,9 +128,9 @@ Methods
    .. _RP_append_example:
    .. code-block:: matlab
 
-      % Write a racetrack resonator and label near the top−left corner of the chip (100 µm WF)
-      P.append('racetrack',[1 4],1,[−50 −50 50 50]);
-      P.append('radius_label',[1 3.996],1,[−50 −50 50 50]);
+      % Write a racetrack resonator and label near the top-left corner of the chip (100 µm WF)
+      P.append('racetrack',[1 4],1,[-50 -50 50 50]);
+      P.append('radius_label',[1 3.996],1,[-50 -50 50 50]);
 
 
 .. method:: Raith_positionlist.plot()
@@ -149,6 +149,7 @@ Methods
 
    Given the |RP| object :matlab:`P` defined in the above :meth:`Raith_positionlist.append` :ref:`Example <RP_append_example>`:
 
+   .. _RP_plot_example:
    .. code-block:: matlab
 
       P.plot;  % Structures are too small to see at this scale
@@ -178,6 +179,7 @@ Methods
 
    Given the |RP| object :matlab:`P` defined in the above :meth:`Raith_positionlist.append` :ref:`Example <RP_append_example>`:
 
+   .. _RP_plotedges_example:
    .. code-block:: matlab
 
       P.plotedges;  % Structures are too small to see at this scale
@@ -207,10 +209,11 @@ Methods
 
    To illustrate the alignment of working areas and writefields, this example specifies working areas which are smaller than the writefield. Assume the |RL| and |RP| objects :matlab:`L` and :matlab:`P`, respectively, are defined as in :numref:`§%s <Raith_positionlist:Constructor>`; to preserve the relative alignment of the racetrack and the label, **uv_c** must be changed to accommodate the difference in WA:
 
+   .. _RP_plotWA_example:
    .. code-block:: matlab
 
-      P.append('racetrack',[1 4],1,[−10 −10 20 10]);
-      P.append('radius_label',[0.99 4.001],1,[−20 −5 10 5]);
+      P.append('racetrack',[1 4],1,[-10 -10 20 10]);
+      P.append('radius_label',[0.99 4.001],1,[-20 -5 10 5]);
       P.plot; % Plot structures
       P.plotWA; % Plot working areas
       axis([935 985 3945 3975]); % Zoom to structures
@@ -225,7 +228,7 @@ Methods
 
 .. method:: Raith_positionlist.plotWF()
 
-   Plot writefields of all structures in positionlist in dotted green lines; writefield centres are marked with a :green:`+` sign.
+   Plot writefields of all structures in positionlist in dotted green lines, with chip outline; writefield centres are marked with a :green:`+` sign.
 
    :Arguments: None
 
@@ -237,8 +240,9 @@ Methods
 
    .. rubric:: Example
 
-   Given all objects defined in the above :meth:`Raith_positionlist.plotWA` :ref:`Example <RP_append_example>`:
+   Given all objects defined in the above :meth:`Raith_positionlist.plotWA` :ref:`Example <RP_plotWA_example>`:
 
+   .. _RP_plotWF_example:
    .. code-block:: matlab
 
       P.plot;  % Plot structures
@@ -252,3 +256,36 @@ Methods
       :width: 500
 
       Working areas in positionlist plotted using the :meth:`Raith_positionlist.plotWA` method
+
+
+.. method:: Raith_positionlist.centre([mbyn])
+
+   Centre current positionlist entries on the chip, preserving relative spacing, with the option of matrix-copying them.
+
+   :Arguments: **mbyn** -- Number of rows and columns of the matrix of sub-chips [optional]; 1 × 2 vector [*m* *n*]
+
+   :Returns: None
+
+   .. note::
+
+      If called with no argument, the current positionlist entries are shifted such that the overall pattern (as defined by the working areas) are centred both vertically and horizontally on the chip. If called with the optional **mbyn** argument, the chip is divided into an *m*-by-*n* matrix of equal-sized rectangular sub-chips, and the positionlist entries are centred as described above in each sub-chip. In either case, the :attr:`poslist <Raith_positionlist.poslist>` property is overwritten; there is no built-in way of undoing this operation.
+
+   .. rubric:: Example
+
+   Given the |RP| object defined in the above :meth:`Raith_positionlist.plotWA` :ref:`Example <RP_plotWA_example>`:
+
+   .. _RP_centre_example:
+   .. code-block:: matlab
+
+      P.plotWF;  % Before centring
+      P.centre;
+      P.plotWF;  % After centring
+      P.centre([4 5]);
+      P.plotWF;  % After matrix−copying
+
+   .. _RP_centre:
+   .. figure:: images/RP_centre.svg
+      :align: center
+      :width: 500
+
+      Position of writefields (a) before centring, (b) after issuing :matlab:`P.centre`, and (c) after issuing :matlab:`P.centre([4 5])`

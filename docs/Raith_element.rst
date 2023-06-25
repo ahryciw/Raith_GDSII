@@ -361,7 +361,7 @@ FBMS path element
 
    Example :matlab:`'fbmspath'` elements
 
-   Element E1: :matlab:`data.cvtr = 0`; Element E2: :matlab:`data.cvtr = [0 0 0.2 0 −0.5]`
+   Element E1: :matlab:`data.cvtr = 0`; Element E2: :matlab:`data.cvtr = [0 0 0.2 0 -0.5]`
 
 
 FBMS circle element
