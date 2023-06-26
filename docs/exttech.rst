@@ -103,3 +103,6 @@ Running the above yields the following output:
 "On-the-fly" GDSII writing
 --------------------------
 
+In situations where the number of elements in the pattern is so large that there is insufficient memory to keep them all in the MATLAB workspace simultaneously, it is still possible to output a GDSII file by generating elements and writing them sequentially; this procedure uses the static |RL| methods :meth:`writerec <Raith_library.writerec>`, :meth:`writehead <Raith_library.writehead>`, :meth:`writebeginstruct <Raith_library.writebeginstruct>`, :meth:`writeelement <Raith_library.writeelement>`, :meth:`writeendstruct <Raith_library.writeendstruct>`, and :meth:`writeendlib <Raith_library.writeendlib>` to write GDSII records directly.\ [1]_ The following general format must be observed:
+
+.. [1] Hard-core enthusiasts should note that it is possible to write an entire arbitrary GDSII file using only the :meth:`Raith_library.writerec` method; such a feat is beyond the scope of this User Guide.
