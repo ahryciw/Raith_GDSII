@@ -281,7 +281,7 @@ Methods
       P.centre;
       P.plotWF;  % After centring
       P.centre([4 5]);
-      P.plotWF;  % After matrix−copying
+      P.plotWF;  % After matrix-copying
 
    .. _RP_centre:
    .. figure:: images/RP_centre.svg
@@ -311,7 +311,7 @@ Methods
    .. code-block:: matlab
 
       P.plotWF; % Before shifting
-      P.shift([1 −2]);
+      P.shift([1 -2]);
       P.plotWF; % After shifting
 
    .. _RP_shift:

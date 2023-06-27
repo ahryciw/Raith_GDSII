@@ -66,7 +66,7 @@ Creating an array of microrings with varying widths:
    w=num2cell(0.1:0.05:0.5)';
 
    % Cell array of disk centres:  15 µm spacing in u, v=0
-   uv_c=num2cell(15*(0:length(w)−1)'*[1 0],2);
+   uv_c=num2cell(15*(0:length(w)-1)'*[1 0],2);
 
    % 'circle' Raith_element objects have properties 'type', and 'data', the
    % latter having fields 'layer', 'uv_c', 'r', 'w', 'N', and 'DF', so we create
@@ -104,5 +104,51 @@ Running the above yields the following output:
 --------------------------
 
 In situations where the number of elements in the pattern is so large that there is insufficient memory to keep them all in the MATLAB workspace simultaneously, it is still possible to output a GDSII file by generating elements and writing them sequentially; this procedure uses the static |RL| methods :meth:`writerec <Raith_library.writerec>`, :meth:`writehead <Raith_library.writehead>`, :meth:`writebeginstruct <Raith_library.writebeginstruct>`, :meth:`writeelement <Raith_library.writeelement>`, :meth:`writeendstruct <Raith_library.writeendstruct>`, and :meth:`writeendlib <Raith_library.writeendlib>` to write GDSII records directly.\ [1]_ The following general format must be observed:
+
+|   :meth:`Raith_library.writehead` --- Header information
+|      :meth:`Raith_library.writebeginstruct` --- Begin first structure in library
+|         :meth:`Raith_library.writeelement` --- First element in structure
+|         ⋮
+|         :meth:`Raith_library.writeelement` --- Last element in structure
+|      :meth:`Raith_library.writeendstruct` --- End first structure
+|      ⋮
+|      :meth:`Raith_library.writebeginstruct` --- Begin last structure in library
+|         :meth:`Raith_library.writeelement` --- First element in structure
+|         ⋮
+|         :meth:`Raith_library.writeelement` --- Last element in structure
+|      :meth:`Raith_library.writeendstruct` --- End last structure
+|   :meth:`Raith_library.writeendlib` --- End library
+
+When writing GDSII files "on the fly", the user is responsible for ensuring that all structures referenced by :matlab:`'sref'` and :matlab:`'aref'` elements are in fact present in the library.
+
+.. rubric::  Example
+
+Creating the same array of microrings as in the above Example :numref:`§%s <exttech:defining patterns using matlab structures>` "on the fly":
+
+.. code:: matlab
+
+   % Vector of ring widths (µm)
+   w=0.1:0.05:0.5;
+
+   % Matrix of disk centres:  15 µm spacing in u, v=0
+   uv_c=15*(0:length(w)-1)'*[1 0];
+
+   % Open file for writing binary data
+   FileID=fopen('/Users/Public/Documents/ringarray.csf','W');
+   Raith_library.writehead(FileID,'ringarray');
+   Raith_library.writebeginstruct(FileID,'rings');
+
+   % Loop through all elements in structure; only one Raith_element object
+   % is in memory at any given time.
+   for k=1:length(w)
+      E=Raith_element('circle',0,uv_c(k,:),5,w(k),100,1.3);
+      Raith_library.writeelement(FileID,E);
+   end
+
+   Raith_library.writeendstruct(FileID);
+   Raith_library.writeendlib(FileID);
+
+   fclose(FileID);
+
 
 .. [1] Hard-core enthusiasts should note that it is possible to write an entire arbitrary GDSII file using only the :meth:`Raith_library.writerec` method; such a feat is beyond the scope of this User Guide.
