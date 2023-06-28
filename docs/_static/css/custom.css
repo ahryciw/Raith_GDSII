@@ -21,8 +21,12 @@ figcaption {
   font: unset;
 }
 
+.rst-content div.figure .caption-text, .rst-content figure .caption-text {
+    font-style: normal;
+}
+
 .caption-text {
-    font-style: italic;
+    font-style: normal;
 }
 
 .caption-number {

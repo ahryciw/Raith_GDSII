@@ -18,7 +18,7 @@ Features
 .. toctree::
    :maxdepth: 2
    :numbered:
-   :caption: Contents:
+   :caption: Table of Contents
 
    introduction
    quickstart
