@@ -5,7 +5,7 @@ Raith_GDSII MATLAB toolbox
 
 The four class definitions in this toolbox provide a simple, versatile, and scriptable means of generating patterns for [Raith](https://www.raith.com) electron-beam lithography (EBL) and focused ion beam (FIB) tools using [MATLAB](https://www.mathworks.com/products/matlab/).
 
-The Raith_GDSII MATLAB Toolbox is currently maintained by the [University of Alberta](https://www.ualberta.ca) [nanoFAB Centre](https://nanofab.ualberta.ca). Versions 1.1 and earlier were developed at the (former) National Institute for Nanotechnology, a joint initiative between the University of Alberta, the Government of Canada, the Government of Alberta, and the National Research Council Canada.
+The Raith_GDSII MATLAB Toolbox is currently maintained by the [University of Alberta nanoFAB Centre](https://nanofab.ualberta.ca). Versions 1.1 and earlier were developed at the (former) National Institute for Nanotechnology, a joint initiative between the University of Alberta, the Government of Canada, the Government of Alberta, and the National Research Council Canada.
 
 Features
 --------
@@ -29,7 +29,7 @@ To install, simply place the four class definitions found in the `src` directory
 Documentation
 -------------
 
-Please refer to `Raith_GDSII MATLAB Toolbox - User Guide.pdf` in the `docs` directory for a quick-start guide, tutorial examples, and a full description of the class definitions.
+Please refer to the [online documentation](https://raith-gdsii.readthedocs.io/en/latest/) for a quick-start guide, tutorial examples, and a full description of the class definitions.
 
 
 License
