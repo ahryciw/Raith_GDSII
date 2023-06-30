@@ -3,9 +3,9 @@ Introduction
 
 The |RG| toolbox provides a simple, versatile, and scriptable means of generating patterns for `Raith <http://www.raith.com>`_  electron-beam lithography (EBL) and focused ion beam (FIB) tools using `MATLAB <http://www.mathworks.com/products/matlab/>`_.  It can also be used to generate standard GDSII files for photomask fabrication or direct-write laser lithography applications.
 
-Although relatively simple structures may be generated directly within the |RNS| software via the GDSII editing tools in the *Design* panel, this interface becomes cumbersome for complicated structures comprising many elements, or for arrays of structures with subtle variations in geometry.  GDSII files can be scripted using third-party libraries,\ [1]_ but beam dose information and Raith curved elements (arcs, circles, and ellipses) are generally not supported.\ [2]_  Scripted generation of patterns using the ASCII-based .asc or .elm formats is possible,\ [3]_ but these files must be manually loaded into a GDSII hierarchy file in the Raith software; the GDSII file is backed up after *each* .asc/.elm file is added to the library, which can yield unacceptably long load-times if there are many structures to add.
+Although relatively simple structures may be generated directly within the |RNS| software via the GDSII editing tools in the *Design* panel, this interface becomes cumbersome for complicated structures comprising many elements, or for arrays of structures with subtle variations in geometry.  GDSII files can be scripted using third-party libraries,\ [1]_ but beam dose information and Raith-specific elements (e.g., curved elements such as arcs, circles, ellipses; |FBMS| paths and circles) are generally not supported.\ [2]_  Scripted generation of patterns using the ASCII-based .asc or .elm formats is possible,\ [3]_ but these files must be manually loaded into a GDSII hierarchy file in the Raith software; the GDSII file is backed up after *each* .asc/.elm file is added to the library, which can yield unacceptably long load-times if there are many structures to add.
 
-To circumvent these issues, the |RG| toolbox may be used to generate both the GDSII hierarchy and positionlist files directly within MATLAB, with full support for Raith curved elements.  The relevant objects may be manipulated using standard MATLAB functionality, making scripting easy.  Furthermore, structures may be plotted using the standard Raith dose factor colourmap---from individual low-level elements to entire positionlists---to aid in visualisation and error-checking during the pattern design process.
+To circumvent these issues, the |RG| toolbox may be used to generate both the GDSII hierarchy and positionlist files directly within MATLAB, with full support for Raith curved and |FBMS| elements.  The relevant objects may be manipulated using standard MATLAB functionality, making scripting easy.  Furthermore, patterns may be plotted using the standard Raith dose factor colourmap---from individual low-level elements to entire positionlists---to aid in visualisation and error-checking during the design process.
 
 The Raith_GDSII classes
 -----------------------
@@ -15,7 +15,7 @@ There are four MATLAB classes in the |RG| toolbox:  |RE|, |RS|, |RL|, and |RP|. 
 |RE|
    Used to define unnamed, low-level GDSII pattern elements.  The following element types are supported:
 
-   :polygon:  A closed, filled polygon.  :matlab:`'polygon'` elements are fractured into trapezoids by the Raith software before writing.
+   :polygon:  A closed, filled polygon.  :matlab:`'polygon'` elements are fractured into trapezoids by the |RNS| software before writing.
    :path:  A path of connected line segments. :matlab:`'path'` elements may be either single-pixel lines or have a non-zero width.
    :dot:  A single-pixel dot, or series thereof.
    :arc:  A segment of a circular or elliptical path (Raith curved element). :matlab:`'arc'` elements may be single-pixel lines, have a non-zero width, or be filled (i.e., a circular or elliptical segment).
@@ -27,7 +27,7 @@ There are four MATLAB classes in the |RG| toolbox:  |RE|, |RS|, |RL|, and |RP|. 
    :sref: A structure reference. :matlab:`'sref'` elements refer to named |RS| objects, and may optionally apply transformations (magnification, rotation, reflection across the *u* axis).\ [5]_
    :aref: An array reference. :matlab:`'aref'` elements generate a rectangular array of named |RS| objects, and may optionally apply transformations (magnification, rotation, reflection across the *u* axis).\ [5]_ [6]_
 
-   Elements of type :matlab:`'arc'`, :matlab:`'circle'`, and :matlab:`'ellipse'`` are implemented as Raith curved elements:  exposure is via a curved beam path which in general consists of concentric ellipses, rather than being fractured into trapezoids.
+   Elements of type :matlab:`'arc'`, :matlab:`'circle'`, and :matlab:`'ellipse'` are implemented as Raith curved elements:  exposure is via a curved beam path which in general consists of concentric ellipses, rather than being fractured into trapezoids.
 
 |RS|
    Used to define named structures, comprising collections of |RE| objects.
@@ -58,7 +58,7 @@ Please cite the |RG| MATLAB toolbox in any publication for which you found it us
 Installation
 ------------
 
-To install the |RG| toolbox, simply place the four |RG| class definitions in the ``src`` directory (:file:`Raith_element.m`, :file:`Raith_structure.m`, :file:`Raith_library.m`, and :file:`Raith_positionlist.m`) in a folder on your MATLAB path.  A full description of the these classes is contained in §§ :doc:`3<Raith_element>`--:doc:`6<Raith_positionlist>`. To get started, however, the following chapter outlines a typical (albeit brief) workflow.
+To install the |RG| toolbox, simply place the four |RG| class definitions in the ``src`` directory (:file:`Raith_element.m`, :file:`Raith_structure.m`, :file:`Raith_library.m`, and :file:`Raith_positionlist.m`) in a folder on your MATLAB path.  A full description of the these classes is contained in §§ :doc:`3<Raith_element>`--:doc:`6<Raith_positionlist>`. To get started, however, the following section outlines a typical (albeit brief) workflow.
 
 
 .. [1] E.g., `Gdspy <https://github.com/heitzmann/gdspy>`_, `libgds <https://github.com/scholi/libgds>`_, and `python-gdsii <https://pypi.org/project/python-gdsii>`_.

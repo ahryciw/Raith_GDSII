@@ -42,7 +42,7 @@ Properties
 
 .. attribute:: Raith_element.data
 
-   Structure array containing additional record data for element; allowed field names and typing of values are determined by the element type (see :numref:`§%s <Raith_element:Constructors>`).
+   `Structure <https://www.mathworks.com/help/matlab/ref/struct.html>`_ containing additional record data for element; allowed field names and typing of values are determined by the element type (see :numref:`§%s <Raith_element:Constructors>`).
 
 
 Constructors
@@ -63,7 +63,7 @@ Constructors
    E=Raith_element('aref',name,uv_0,n_colrow,a_colrow[,mag[,angle[,reflect]]])
 
 
-The above constructors may be used to create |RE| objects. The first argument sets the element :attr:`type <Raith_element.type>` property, followed by a list of arguments comprising the fields of the :attr:`data <Raith_element.data>` property (a MATLAB structure array), which vary depend on the :attr:`type <Raith_element.type>`. Agruments shown in brackets are optional.
+The above constructors may be used to create |RE| objects. The first argument sets the element :attr:`type <Raith_element.type>` property, followed by a list of arguments comprising the fields of the :attr:`data <Raith_element.data>` property (a MATLAB :matlab:`struct` object), which vary depend on the :attr:`type <Raith_element.type>`. Agruments shown in brackets are optional.
 Alternately, an empty, argumentless |RE| object may be called, with the :attr:`type <Raith_element.type>` and :attr:`data <Raith_element.data>` properties assigned afterward. For example:
 
 .. code-block:: matlab
@@ -178,7 +178,7 @@ Arc element
 :Properties: + **type** --  :matlab:`'arc'` (character array)
              + **data.layer** -- GDSII layer (integer); allowed values are 0--63
              + **data.uv_c** -- Arc centre; 1 × 2 vector [*u*\ :sub:`c` \ *v*\ :sub:`c`] (µm)
-             + **data.r** -- Radius of arc; may be scalar for a circular arc, or a 1 × 2 vector denoting semi-axes, [*a b*], for an elliptical arc (µm)
+             + **data.r** -- Radius of arc; may be scalar for a circular arc, or a 1 × 2 vector denoting semi-axes, [*a b*], for an elliptical arc (µm); *a* corresponds to the semi-axis in the :attr:`data.angle <Raith_element.data>` direction
              + **data.theta** -- Starting and ending angles of arc with respect to axis defined by :attr:`data.angle <Raith_element.data>` argument, counter-clockwise positive; 1 × 2 vector [*θ*\ :sub:`1` *θ*\ :sub:`2`] (degrees)
              + **data.angle** -- Angle of rotation *ϕ* between positive *u*-axis and *θ* = 0 axis (degrees)
              + **data.w** -- Arc linewidth (µm); if empty, arc is a filled elliptical disc segment; if zero, arc is a single-pixel line; if non-zero, arc has a width (elliptical annulus sector); a negative value is considered to be the same as empty by the |RNS| software (filled elliptical disc segment)
@@ -314,7 +314,7 @@ Text element
 
 .. note::
 
-   A `simply connected <https://en.wikipedia.org/wiki/Simply_connected_space>`_ font is used in |RE| :matlab:`'text'` elements to avoid the problem of symbol segments being released during a sacrificial layer etch. As an example, consider etching the letter "A" through the device layer of a silicon-on-insulator chip. In the default |RNS| font, the triangular centre of the letter "A" is not connected to the surrounding plane. If the underlying buried oxide layer was subsequetly etched away isotropically for sufficiently long (e.g., in buffered-oxide etch), the central triangle would be released, potentially landing on a critical feature of the chip. A letter "A" rendered as a |RE| :matlab:`'text'` element does not encounter this problem due to its simply connected nature. The |RE| :matlab:`'text'` element font is inspired by the `Geogrotesque <https://emtype.net/fonts/geogrotesque>`_ and `Geogrotesque Stencil <https://emtype.net/fonts/geogrotesque-stencil>`_ fonts.
+   A `simply connected <https://en.wikipedia.org/wiki/Simply_connected_space>`_ font is used in |RE| :matlab:`'text'` elements to avoid the problem of symbol segments being released during a sacrificial layer etch. As an example, consider etching the letter "A" through the device layer of a silicon-on-insulator chip. In the default |RNS| font, the triangular centre of the letter "A" is not connected to the surrounding plane. If the underlying buried oxide layer was subsequently etched away isotropically for sufficiently long (e.g., in buffered-oxide etch), the central triangle would be released, potentially landing on a critical feature of the chip. A letter "A" rendered as a |RE| :matlab:`'text'` element does not encounter this problem due to its simply connected nature. The |RE| :matlab:`'text'` element font is inspired by the `Geogrotesque <https://emtype.net/fonts/geogrotesque>`_ and `Geogrotesque Stencil <https://emtype.net/fonts/geogrotesque-stencil>`_ fonts.
 
    .. _A_comparison:
    .. figure:: images/A_comparison.svg

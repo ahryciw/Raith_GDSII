@@ -3,7 +3,7 @@ Raith_GDSII MATLAB Toolbox documentation
 
 This toolbox enables the creation of patterns for `Raith <http://www.raith.com>`_ electron-beam lithography and focused ion beam tools using `MATLAB <http://www.mathworks.com/products/matlab/>`_.  It can also be used to create standard GDSII files for arbitrary lithography appplications.
 
-The Raith_GDSII MATLAB Toolbox is currently maintained by the `University of Alberta <https://www.ualberta.ca>`_ `nanoFAB Centre <https://www.nanofab.ualberta.ca>`_ [1]_.  Please refer to the `GitHub <https://github.com/ahryciw/Raith_GDSII>`_ repository for the source code and installation details.
+The Raith_GDSII MATLAB Toolbox is currently maintained by the `University of Alberta nanoFAB Centre <https://www.nanofab.ualberta.ca>`_.\ [1]_  Please refer to the `GitHub <https://github.com/ahryciw/Raith_GDSII>`_ repository for the source code and installation details.
 
 Features
 --------

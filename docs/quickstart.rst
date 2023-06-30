@@ -6,7 +6,7 @@ As a simple example, let us construct a pattern of a cantilever for use with a p
 .. code-block:: matlabsession
 
    % obj=Raith_element('polygon',layer,uv,DF)
-   % uv is a 2 x n matrix of polygon vertices [u_values;v_values] in um
+   % uv is a 2 x n matrix of polygon vertices [u_values;v_values] in µm
    % DF is dose factor; value of 1.3 chosen simply for display colour
    >> E=Raith_element('polygon',0,[0 13 13 0 0 10 10 0 0; ...
                                    0  0  7 7 4  4  3 3 0],1.3);
@@ -52,7 +52,7 @@ We now bundle these elements into a named structure:
    :align: center
    :width: 500
 
-   |RS| object :matlab:`'10_um_cantilever'`
+   |RS| object :matlab:`'10-um-cantilever'`
 
 This structure can now be used in a |RL| object, used to create the GDSII hierarchy (.csf file) which will be loaded into the Raith software:
 
@@ -68,7 +68,7 @@ This structure can now be used in a |RL| object, used to create the GDSII hierar
    Structure 1: 10-um-cantilever
    GDSII library cantilevers.csf successfully written.
 
-Next, we create a positionlist using a Raith_positionlist object. We specify a 100 µm × 100 µm writefield and a 10 mm × 10 mm chip, and assume that the path of :file:`cantilevers.csf` will be :file:`F:\\Raith\\` on the Raith computer:
+Next, we create a positionlist using a |RP| object. We specify a 100 µm × 100 µm writefield and a 10 mm × 10 mm chip, and assume that the path of :file:`cantilevers.csf` will be :file:`F:\\Raith\\` on the Raith |EBL| tool computer:
 
 .. code-block:: matlabsession
 
@@ -76,7 +76,7 @@ Next, we create a positionlist using a Raith_positionlist object. We specify a 1
    >> P=Raith_positionlist(L,'F:\Raith\cantilevers.csf',[100 100],[10 10]);
    % Append a structure to the positionlist using P.append(structname,uv_c,DF,WA[,layers]).
    % uv_c is the position of the bottom-left writefield, in mm.
-   % WA defines the working area, WA=[u_min v_min u_max v_max], in um.
+   % WA defines the working area, WA=[u_min v_min u_max v_max], in µm.
    % Argument layers is optional, and defaults to exposing all layers present in structure.
    >> P.append('10-um-cantilever',[5 5],1,[-50 -50 50 50]);
    >> clf
@@ -97,9 +97,9 @@ Next, we create a positionlist using a Raith_positionlist object. We specify a 1
    :align: center
    :width: 500
 
-   Plotting the positionlist. The writefield boundary is marked by a green dotted line, with the centre marked with a +. Axis limits were chosen to show the structure at chip centre.
+   Plotting the positionlist. The writefield boundary is marked by a green dotted line, with the centre marked with a :green:`+`. Axis limits were chosen to show the structure at chip centre.
 
-To use these files in an |EBL| or |FIB| session, place :file:`cantilevers.csf` on :file:`F:\\Raith\\` on the Raith tool control computer, open :file:`cantilevers.csf` via :guilabel:`Design panel` → :guilabel:`File` → :guilabel:`Open...` in the |RNS| software, and open :file:`cantilevers.pls` via :guilabel:`File` → :guilabel:`Open positionlist...`. After the usual preliminary steps (origin and angle correction, aperture alignment, stigmation, focusing, beam current measurement, etc.), the positionlist may be scanned as normal.
+To use these files in an |EBL| or |FIB| session, place :file:`cantilevers.csf` on :file:`F:\\Raith\\` on the Raith tool control computer, open :file:`cantilevers.csf` via :guilabel:`Design panel` → :guilabel:`File` → :guilabel:`Open...` in the |RNS| software, and open :file:`cantilevers.pls` via :guilabel:`File` → :guilabel:`Open positionlist...`. After the usual preliminary steps (aperture alignment, stigmation, focusing, origin and angle correction, beam current measurement, etc.), the positionlist may be scanned as normal to perform the exposure.
 
 The above example illustrates the main functionality of the |RG| toolbox. In practice, however, structure definitions could be parametrised to facilitate script-based generation of many devices with similar, though distinct, geometries. For example, we could create a function (:file:`cantilever.m`) which takes the cantilever length, cantilever width, window width (in µm) as arguments and returns a |RS| object:
 
@@ -116,9 +116,9 @@ The above example illustrates the main functionality of the |RG| toolbox. In pra
    %
    % Arguments:
    %
-   % L_c - Cantilever length (um)
-   % w_c - Cantilever width (um)
-   % w_w - Window width (um)
+   % L_c - Cantilever length (µm)
+   % w_c - Cantilever width (µm)
+   % w_w - Window width (µm)
    %
    % Returns:
    %
@@ -139,7 +139,7 @@ The above example illustrates the main functionality of the |RG| toolbox. In pra
    E=Raith_element('polygon',0,[u;v],1);
 
    % Define text label for cantilever length
-   % Text height is hard-coded at 3 um
+   % Text height is hard-coded at 3 µm
    % Label placed to left of cantilever
    E(2)=Raith_element('text',0,[-2 v1/2],3,0,[2 1],num2str(L_c),1.5);
 
@@ -157,9 +157,9 @@ Using this function, it is simple to generate an array of labelled cantilevers w
 
    % Create an array of cantilevers of different lengths
 
-   L_c=4:2:30;  % Cantilever lengths, from 4 by 2 to 30 um
-   w_c=1;  % Cantilever width (um)
-   w_w=3;  % Window width (um)
+   L_c=4:2:30;  % Cantilever lengths, from 4 by 2 to 30 µm
+   w_c=1;  % Cantilever width (µm)
+   w_w=3;  % Window width (µm)
 
    % Loop to construct all cantilever structures
    for k=1:length(L_c)
@@ -186,7 +186,7 @@ Using this function, it is simple to generate an array of labelled cantilevers w
 
    Positionlist plot of a cantilever array constructed using :ref:`cantilever.m`.  Axis limits were chosen to show the structures at chip centre.
 
-As a final example of a useful |RG| toolbox feature, note that |RP| objects have a :meth:`centre <Raith_positionlist.centre>` method which shifts an entire positionlist to centre it on the chip. This method also takes an optional argument to create a "matrix copy" array (to use Raith software terminology) of the positionlist, with the entire matrix centred on the chip; this is useful, for example, to create multiple copies of the pattern on the chip for subsequent cleaving of the specimen into sub-chips.
+As a final example of a useful |RG| toolbox feature, note that |RP| objects have a :meth:`centre <Raith_positionlist.centre>` method which shifts an entire positionlist to centre it on the chip. This method also takes an optional argument to create a "matrix copy" array (to use |RNS| terminology) of the positionlist, with the entire matrix centred on the chip; this is useful, for example, to create multiple copies of the pattern on the chip for subsequent cleaving of the specimen into sub-chips.
 
 Given the above positionlist :matlab:`P2`, we can create a 3 × 3 array of this pattern on the 5 mm × 5 mm chip via:
 
