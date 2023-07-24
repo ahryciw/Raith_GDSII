@@ -63,11 +63,8 @@ classdef Raith_library < handle
 %
 %
 % Aaron Hryciw
-% 2013-03-07
-%
-% Version 1.2
-% 2014-10-07
-%
+% nanoFAB Centre
+% University of Alberta
 %
 % The Raith_GDSII MATLAB Toolbox is currently maintained by the University 
 % of Alberta nanoFAB Centre.  Versions 1.1 and earlier were developed at 
@@ -78,6 +75,11 @@ classdef Raith_library < handle
 % This Source Code Form is subject to the terms of the Mozilla Public
 % License, v. 2.0.  If a copy of the MPL was not distributed with this 
 % file, you can obtain one at http://mozilla.org/MPL/2.0/.
+%
+% For more information, see the online documentation for the <a href="matlab: 
+% web('https://raith-gdsii.readthedocs.io/en/latest/Raith_library.html')">Raith_library</a> class
+% and the overall <a href="matlab: 
+% web('https://raith-gdsii.readthedocs.io/en/latest/')">Raith_GDSII</a> toolbox.
 %
 
 	properties
