@@ -262,9 +262,9 @@ classdef Raith_library < handle
                 [C{:}]=deal(obj.structures.reflist);
                 ein=~cellfun('isempty',C);  % Indices of non-empty cells
                 allrefs=unique([C{ein}]);  % List of all structures referenced in 'sref' and 'aref' elements in library
-				matlabver = version;
+				matlabver=regexp(version,'\.','split');  % Version numbering changed in R2023b
 				% setdiff behaviour was changed in R2013a (Matlab version 8)
-				if matlabver(1) <= '8'
+				if str2double(matlabver{1})<=8
 					missing=setdiff(allrefs,obj.structlist);  % Missing structures (those in allrefs that aren't in structlist)
 				else
 					missing=setdiff(allrefs,obj.structlist,'Legacy');  % Use legacy option for Matlab R2013a and later
