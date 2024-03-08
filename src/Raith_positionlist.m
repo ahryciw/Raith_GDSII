@@ -107,7 +107,6 @@ classdef Raith_positionlist < handle
         hChip=-1; % Handle for chip outlines being plotted
     end % set access private properties
    
-    
     methods
     
         function obj=Raith_positionlist(library,csf_path,WF,chipUV)
@@ -401,9 +400,7 @@ classdef Raith_positionlist < handle
             
         end % writepls
         
-        
     end % methods
-    
     
     
     methods(Hidden)

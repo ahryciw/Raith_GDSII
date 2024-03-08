@@ -90,8 +90,7 @@ classdef Raith_library < handle
     properties (SetAccess=private)
         structlist % Ordered cell array of all names of structures found in library 
     end % set access private properties
-    
-       
+           
     methods
         
         function obj=Raith_library(name,structures)
@@ -695,7 +694,7 @@ classdef Raith_library < handle
                 case 'polygon'
                     Raith_library.writerec(FileID,8,0,[]);  % BOUNDARY (0800)
                     Raith_library.writerec(FileID,13,2,ELE.data.layer);  % LAYER (0d02)
-                    Raith_library.writerec(FileID,14,2,1000*ELE.data.DF);  % DATATYPE (0e02); 1000*DF
+                    Raith_library.writerec(FileID,14,2,Raith_library.DFint(ELE.data.DF));  % DATATYPE (0e02); DF
                     XY=reshape([ELE.data.uv]*1000,1,2*size(ELE.data.uv,2));  % Reshape to 1D array of sequential XY pairs (in nm)
                     Raith_library.writerec(FileID,16,3,XY);  % XY (1003)
                     Raith_library.writerec(FileID,17,0,[]);  % ENDEL (1100)
@@ -703,7 +702,7 @@ classdef Raith_library < handle
                 case 'path'
                     Raith_library.writerec(FileID,9,0,[]);  % PATH (0900)
                     Raith_library.writerec(FileID,13,2,ELE.data.layer);  % LAYER (0d02)
-                    Raith_library.writerec(FileID,14,2,1000*ELE.data.DF);  % DATATYPE (0e02); 1000*DF
+                    Raith_library.writerec(FileID,14,2,Raith_library.DFint(ELE.data.DF));  % DATATYPE (0e02); DF
                     Raith_library.writerec(FileID,15,3,1000*ELE.data.w);  % WIDTH (0f03); in nm
                     XY=reshape([ELE.data.uv]*1000,1,2*size(ELE.data.uv,2));  % Reshape to 1D array of sequential XY pairs (in nm)
                     Raith_library.writerec(FileID,16,3,XY);  % XY (1003)
@@ -718,7 +717,7 @@ classdef Raith_library < handle
                     for kd=1:size(ELE.data.uv,2)
                         Raith_library.writerec(FileID,9,0,[]);  % PATH (0900)
                         Raith_library.writerec(FileID,13,2,ELE.data.layer);  % LAYER (0d02)
-                        Raith_library.writerec(FileID,14,2,1000*DF(kd));  % DATATYPE (0e02); 1000*DF
+                        Raith_library.writerec(FileID,14,2,Raith_library.DFint(DF(kd)));  % DATATYPE (0e02); DF
                         XY=[ELE.data.uv(1,kd) ELE.data.uv(2,kd) ELE.data.uv(1,kd) ELE.data.uv(2,kd)]*1000;  % XY pairs of "path" defining dot (in nm)
                         Raith_library.writerec(FileID,16,3,XY);  % XY (1003)
                         Raith_library.writerec(FileID,17,0,[]);  % ENDEL (1100)
@@ -727,7 +726,7 @@ classdef Raith_library < handle
                 case 'arc'
                     Raith_library.writerec(FileID,86,0,[]);  % Raith curved element (5600)
                     Raith_library.writerec(FileID,13,2,ELE.data.layer);  % LAYER (0d02)
-                    Raith_library.writerec(FileID,14,2,1000*ELE.data.DF);  % DATATYPE (0e02); 1000*DF
+                    Raith_library.writerec(FileID,14,2,Raith_library.DFint(ELE.data.DF));  % DATATYPE (0e02); DF
                     if isscalar(ELE.data.r)
                         fflag=4; % Flag for unfilled circular disc segment
                         r=[1 1]*ELE.data.r;
@@ -751,7 +750,7 @@ classdef Raith_library < handle
                 case 'circle'
                     Raith_library.writerec(FileID,86,0,[]);  % Raith curved element (5600)
                     Raith_library.writerec(FileID,13,2,ELE.data.layer);  % LAYER (0d02)
-                    Raith_library.writerec(FileID,14,2,1000*ELE.data.DF);  % DATATYPE (0e02); 1000*DF
+                    Raith_library.writerec(FileID,14,2,Raith_library.DFint(ELE.data.DF));  % DATATYPE (0e02); DF
                     if isempty(ELE.data.w) 
                         fflag=2; % Flag for filled circle
                     else
@@ -767,7 +766,7 @@ classdef Raith_library < handle
                 case 'ellipse'
                     Raith_library.writerec(FileID,86,0,[]);  % Raith curved element (5600)
                     Raith_library.writerec(FileID,13,2,ELE.data.layer);  % LAYER (0d02)
-                    Raith_library.writerec(FileID,14,2,1000*ELE.data.DF);  % DATATYPE (0e02); 1000*DF
+                    Raith_library.writerec(FileID,14,2,Raith_library.DFint(ELE.data.DF));  % DATATYPE (0e02); DF
                     if isempty(ELE.data.w) 
                         fflag=3; % Flag for filled ellipse
                     else
@@ -786,7 +785,7 @@ classdef Raith_library < handle
                     for kT=1:length(T.elements)
                         Raith_library.writerec(FileID,8,0,[]);  % BOUNDARY (0800)
                         Raith_library.writerec(FileID,13,2,ELE.data.layer);  % LAYER (0d02)
-                        Raith_library.writerec(FileID,14,2,1000*ELE.data.DF);  % DATATYPE (0e02); 1000*DF
+                        Raith_library.writerec(FileID,14,2,Raith_library.DFint(ELE.data.DF));  % DATATYPE (0e02); DF
                         XY=reshape([T.elements(kT).data.uv]*1000,1,2*size(T.elements(kT).data.uv,2));  % Reshape to 1D array of sequential XY pairs (in nm)
                         Raith_library.writerec(FileID,16,3,XY);  % XY (1003)
                         Raith_library.writerec(FileID,17,0,[]);  % ENDEL (1100)
@@ -795,7 +794,7 @@ classdef Raith_library < handle
                 case 'fbmspath'  % FBMS path
                     Raith_library.writerec(FileID,88,0,[]);  % Raith FBMS element (5800)
                     Raith_library.writerec(FileID,13,2,ELE.data.layer);  % LAYER (0d02)
-                    Raith_library.writerec(FileID,14,2,1000*ELE.data.DF);  % DATATYPE (0e02); 1000*DF
+                    Raith_library.writerec(FileID,14,2,Raith_library.DFint(ELE.data.DF));  % DATATYPE (0e02); DF
                     Raith_library.writerec(FileID,15,3,1000*ELE.data.w);  % WIDTH (0f03); in nm
                     if isscalar(ELE.data.cvtr) % Zero curvature for all segments
                         cvtr=zeros(1,size(ELE.data.uv,2));
@@ -811,7 +810,7 @@ classdef Raith_library < handle
                 case 'fbmscircle'  % FBMS circle
                     Raith_library.writerec(FileID,88,0,[]);  % Raith FBMS element (5800)
                     Raith_library.writerec(FileID,13,2,ELE.data.layer);  % LAYER (0d02)
-                    Raith_library.writerec(FileID,14,2,1000*ELE.data.DF);  % DATATYPE (0e02); 1000*DF
+                    Raith_library.writerec(FileID,14,2,Raith_library.DFint(ELE.data.DF));  % DATATYPE (0e02); DF
                     Raith_library.writerec(FileID,15,3,1000*ELE.data.w);  % WIDTH (0f03); in nm
                     XY=[0 0 0 0 0 ELE.data.uv_c*1000 ELE.data.r*1000];  % Reshape to 1D array of sequential XY pairs
                     Raith_library.writerec(FileID,16,3,XY);  % XY (1003)
@@ -886,9 +885,20 @@ classdef Raith_library < handle
         end  % writeendlib
 
         
+        function d=DFint(DF)
+            
+            % Convert dose factor to integer for DATATYPE record
+            
+            if DF<=30
+                d=1000*DF;  % 0.001 precision
+            else
+                d=2*(DF-30)+30000;  % 0.5 precision
+            end
+            
+        end  % DFint
         
-    end % Static, hidden methods
-    
+        
+    end % static methods
    
     
 end

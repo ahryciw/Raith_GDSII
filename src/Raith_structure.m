@@ -133,8 +133,6 @@ classdef Raith_structure < handle
         end % set.name
         
         
-        
-        
         function plot(obj,varargin)
         %
         % Raith_structure.plot([M,scDF]) 
@@ -202,6 +200,6 @@ classdef Raith_structure < handle
             
         end % plotedges
                 
-    end
+    end % methods
     
 end
